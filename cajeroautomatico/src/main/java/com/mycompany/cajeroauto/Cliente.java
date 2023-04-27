@@ -59,9 +59,5 @@ public class Cliente {
     return saldoTotal;
 }
 
-
-    public boolean autenticar(String nombreUsuario, String password) {
-        return this.nombreUsuario.equals(nombreUsuario) && this.password.equals(password);
-    }
 }
 
