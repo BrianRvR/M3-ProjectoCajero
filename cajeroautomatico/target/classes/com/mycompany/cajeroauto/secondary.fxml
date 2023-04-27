@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="279.0" prefWidth="473.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.SecondaryController">
+   <children>
+      <Button fx:id="btncorriente" layoutX="49.0" layoutY="124.0" mnemonicParsing="false" onAction="#cargarPantallaCorriente" prefHeight="31.0" prefWidth="149.0" text="CORRIENTE" />
+      <Button fx:id="btnahorro" layoutX="275.0" layoutY="124.0" mnemonicParsing="false" onAction="#cargarPantallaAhorro" prefHeight="31.0" prefWidth="149.0" text="AHORRO" />
+      <Label fx:id="nombreUsuarioLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="185.0" layoutY="53.0" prefHeight="38.0" prefWidth="103.0" text="Label" textAlignment="CENTER" />
+   </children>
+</AnchorPane>
