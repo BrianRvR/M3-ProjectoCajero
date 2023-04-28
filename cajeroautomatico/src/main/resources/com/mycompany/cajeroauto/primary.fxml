@@ -4,33 +4,45 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="564.0" style="-fx-background-color: #E1E1E1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="545.0" style="-fx-background-color: #E1E1E1;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PrimaryController">
    <children>
-      <Label layoutX="226.0" layoutY="113.0" prefHeight="29.0" prefWidth="111.0" text="USUARIO" textAlignment="CENTER" textFill="#7c7c7c">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="216.0" layoutY="124.0" prefHeight="29.0" prefWidth="111.0" text="USUARIO" textAlignment="CENTER" textFill="#7c7c7c">
          <font>
             <Font name="Arial Black" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="201.0" layoutY="193.0" text="CONTRASEÑA" textAlignment="CENTER" textFill="#7c7c7c">
+      <Label layoutX="202.0" layoutY="207.0" text="CONTRASEÑA" textAlignment="CENTER" textFill="#7c7c7c">
          <font>
             <Font name="Arial Black" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="usuarioField" alignment="CENTER" layoutX="192.0" layoutY="143.0" onAction="#iniciarSesion" prefHeight="25.0" prefWidth="174.0" />
-      <Button fx:id="btnlogin" layoutX="245.0" layoutY="274.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="27.0" prefWidth="68.0" text="LOGIN">
+      <TextField fx:id="usuarioField" alignment="CENTER" layoutX="184.0" layoutY="160.0" onAction="#iniciarSesion" prefHeight="25.0" prefWidth="174.0" />
+      <Button fx:id="btnlogin" layoutX="237.0" layoutY="309.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="27.0" prefWidth="68.0" text="LOGIN">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Label layoutX="173.0" layoutY="54.0" text="INICIAR SESION">
+      <Label layoutX="151.0" layoutY="64.0" text="INICIAR SESION">
          <font>
             <Font name="FreeSans Bold" size="30.0" />
          </font>
       </Label>
-      <PasswordField fx:id="contrasenaField" alignment="CENTER" layoutX="194.0" layoutY="224.0" onAction="#iniciarSesion" prefHeight="25.0" prefWidth="174.0" />
-      <Label fx:id="mensaje" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="309.0" prefHeight="62.0" prefWidth="402.0" textAlignment="CENTER" />
+      <PasswordField fx:id="contrasenaField" alignment="CENTER" layoutX="184.0" layoutY="242.0" onAction="#iniciarSesion" prefHeight="25.0" prefWidth="174.0" />
+      <Label fx:id="mensaje" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="342.0" prefHeight="49.0" prefWidth="296.0" textAlignment="CENTER" />
+      <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="432.0" layoutY="1.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="119.0" fitWidth="111.0" layoutY="319.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

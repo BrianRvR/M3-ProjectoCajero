@@ -31,7 +31,7 @@ public class SecondaryController {
     @FXML
     private void cargarPantallaCorriente() throws IOException {
         // Cargar la pantalla de la cuenta corriente
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PantallaCoriente.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PantallaCorriente.fxml"));
         Parent root = loader.load();
         PantallaCorrienteController controller = loader.getController();
         controller.setCliente(cliente);

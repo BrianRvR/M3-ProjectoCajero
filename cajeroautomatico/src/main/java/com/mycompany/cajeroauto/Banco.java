@@ -58,6 +58,7 @@ public class Banco {
     public void agregarCuenta(Cuenta cuenta) {
         cuentas.add(cuenta);
     }
+    
     public Cliente buscarClientePorCredenciales(String nombreUsuario, String password) {
     for (Cliente cliente : clientes) {
         if (cliente.getNombreUsuario().equals(nombreUsuario) && cliente.getPassword().equals(password)) {
@@ -77,6 +78,27 @@ public class Banco {
     }
     return null;
     }
+    
+    public Cuenta buscarCuentaPorId(String idCuenta) {
+    for (Cuenta cuenta : cuentas) {
+        if (cuenta.getIdCuenta().equals(idCuenta)) {
+            return cuenta;
+        }
+    }
+    return null;
+    }
+    public Cuenta buscarCuentaPorTipo(String tipo) {
+    for (Cliente cliente : clientes) {
+        for (Cuenta cuenta : cliente.getCuentas()) {
+            if (cuenta.getTipoCuenta().equalsIgnoreCase(tipo)) {
+                return cuenta;
+            }
+        }
+    }
+    return null;
+    }
+
+
 
     
     
@@ -122,14 +144,14 @@ public class Banco {
 
     public void crearClientesConCuentas() {
     // Crear clientes y cuentas dinámicamente
-        Cliente cliente1 = new Cliente("usuario1", "password1");
+        Cliente cliente1 = new Cliente("jose", "jose");
         Cuenta cuenta1 = new Cuenta("001", "corriente", 1000);
         Cuenta cuenta2 = new Cuenta("002", "ahorro", 5000);
         cliente1.agregarCuenta(cuenta1);
         cliente1.agregarCuenta(cuenta2);
         agregarCliente(cliente1);
 
-        Cliente cliente2 = new Cliente("usuario2", "password2");
+        Cliente cliente2 = new Cliente("aurelio", "aurelio");
         Cuenta cuenta3 = new Cuenta("003", "corriente", 2000);
         Cuenta cuenta4 = new Cuenta("004", "ahorro", 10000);
         cliente2.agregarCuenta(cuenta3);

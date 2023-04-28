@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.DetallesCuenta">
+   <children>
+      <ImageView fitHeight="453.0" fitWidth="561.0" layoutX="-8.0" layoutY="-7.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/marcocajero.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="104.0" layoutY="321.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="66.0" text="Volver" />
+      <Label fx:id="idCuentaLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="281.0" layoutY="92.0" prefHeight="38.0" prefWidth="151.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="saldoLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="92.0" prefHeight="38.0" prefWidth="151.0" text="Label" textAlignment="CENTER" />
+   </children>
+</AnchorPane>

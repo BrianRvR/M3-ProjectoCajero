@@ -57,7 +57,25 @@ public class Cliente {
         saldoTotal += cuenta.getSaldoActual();
     }
     return saldoTotal;
-}
+    }
+    
+    public Cuenta buscarCuentaPorId(String idCuenta) {
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta.getIdCuenta().equals(idCuenta)) {
+                return cuenta;
+            }
+        }
+        return null;
+    }
+    
+    public Cuenta buscarCuentaPorTipo(String tipo) {
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta.getTipoCuenta().equalsIgnoreCase(tipo)) {
+                return cuenta;
+            }
+        }
+        return null;
+    }
 
 }
 

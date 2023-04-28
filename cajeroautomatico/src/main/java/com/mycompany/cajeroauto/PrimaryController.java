@@ -50,14 +50,14 @@ public class PrimaryController {
             // Si las credenciales son incorrectas o el cliente no tiene cuentas, mostrar mensaje de error y aumentar contador de intentos
         intentos++;
         if (intentos == 3) {
-            mensaje.setText("Ha excedido el número máximo de intentos. Su cuenta ha sido bloqueada.");
+            mensaje.setText("Ha excedido el número máximo de intentos.");
             mensaje.setTextFill(Color.RED);
             usuarioField.setDisable(true);
             contrasenaField.setDisable(true);
             btnlogin.setDisable(true);
 
         } else {
-            mensaje.setText("Credenciales incorrectas o el cliente no tiene cuentas asociadas. Por favor, verifique su nombre de usuario y contraseña.");
+            mensaje.setText("Por favor, verifique su nombre de usuario y contraseña.");
             mensaje.setTextFill(Color.RED);
         }
     }
