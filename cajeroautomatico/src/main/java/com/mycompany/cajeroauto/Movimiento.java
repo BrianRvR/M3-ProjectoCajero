@@ -4,6 +4,7 @@
  */
 package com.mycompany.cajeroauto;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -40,5 +41,15 @@ public class Movimiento {
     public String getDescripcion() {
         return descripcion;
     }
-  
+
+    @Override
+    public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return "[" + sdf.format(fechaHora) + "] " + tipoMovimiento + " - " + descripcion + ": " + monto;
+    }
+
+    public String toCSVLine() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return tipoMovimiento + ";" + sdf.format(fechaHora) + ";" + monto + ";" + descripcion;
+    }
 }

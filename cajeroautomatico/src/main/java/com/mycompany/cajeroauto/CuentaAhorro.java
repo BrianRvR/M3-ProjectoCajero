@@ -9,7 +9,7 @@ package com.mycompany.cajeroauto;
  * @author alumne
  */
 public class CuentaAhorro extends Cuenta {
-    public CuentaAhorro(String idCuenta, double saldoActual) {
+    public CuentaAhorro(int idCuenta, double saldoActual) {
         super(idCuenta, "ahorro", saldoActual);
     }
 }

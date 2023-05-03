@@ -4,6 +4,7 @@
  */
 package com.mycompany.cajeroauto;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,19 +14,19 @@ import java.util.List;
  */
 public class Cuenta {
     
-    private String idCuenta;
+    private int idCuenta;
     private String tipo;
     private double saldoActual;
     private List<Movimiento> movimientos;
 
-    public Cuenta(String idCuenta, String tipo, double saldoActual) {
+    public Cuenta(int idCuenta, String tipo, double saldoActual) {
         this.idCuenta = idCuenta;
         this.tipo = tipo;
         this.saldoActual = saldoActual;
         this.movimientos = new ArrayList<>();
     }
 
-    public String getIdCuenta() {
+    public int getIdCuenta() {
         return idCuenta;
     }
 
@@ -36,7 +37,71 @@ public class Cuenta {
     public double getSaldoActual() {
         return saldoActual;
     }
+    
+    
+    public void setSaldoActual(double saldo) {
+        this.saldoActual = saldo;
+        }
 
+        public void actualizarSaldo() {
+        double saldoActual = 0.0;
+        for (Movimiento movimiento : movimientos) {
+            saldoActual += movimiento.getMonto();
+        }
+        setSaldoActual(saldoActual);
+
+        System.out.println("Actualizando saldo en archivo CSV...");
+        try {
+            Banco.actualizarInfoCuentaCSV(this, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
+            System.out.println("Saldo actualizado en archivo CSV.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void retirar(double monto) {
+        if (monto <= 0) {
+            throw new IllegalArgumentException("Monto a retirar debe ser mayor que cero");
+        }
+        if (monto <= saldoActual) {
+            saldoActual -= monto;
+            Movimiento movimiento = new Movimiento("retiro", monto, "Retiro de cuenta");
+            movimientos.add(movimiento);
+            actualizarSaldo(); // Llamar al método para actualizar el saldo de la cuenta
+            System.out.println("Retiro de " + monto + " realizado correctamente.");
+
+            System.out.println("Actualizando saldo en archivo CSV...");
+            try {
+                Banco.actualizarInfoCuentaCSV(this, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
+                System.out.println("Saldo actualizado en archivo CSV.");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            throw new IllegalArgumentException("Saldo insuficiente");
+        }
+    }
+    
+    public void ingresar(double monto) {
+        if (monto <= 0) {
+            throw new IllegalArgumentException("Monto a ingresar debe ser mayor que cero");
+        }
+
+        saldoActual += monto;
+        Movimiento movimiento = new Movimiento("ingreso", monto, "Ingreso a cuenta");
+        movimientos.add(movimiento);
+        actualizarSaldo(); // Llamar al método para actualizar el saldo de la cuenta
+        System.out.println("Ingreso de " + monto + " realizado correctamente.");
+
+        System.out.println("Actualizando saldo en archivo CSV...");
+        try {
+            Banco.actualizarInfoCuentaCSV(this, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
+            System.out.println("Saldo actualizado en archivo CSV.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public List<Movimiento> getMovimientos() {
         return movimientos;
     }
@@ -47,31 +112,27 @@ public class Cuenta {
         movimientos.add(movimiento);
     }
 
-    public void retirar(double monto) {
-        if (monto <= saldoActual) {
-            saldoActual -= monto;
-            Movimiento movimiento = new Movimiento("retiro", monto, "Retiro de cuenta");
-            movimientos.add(movimiento);
-        } else {
-            throw new IllegalArgumentException("Saldo insuficiente");
-        }
+   
+    
+    public boolean verificarSaldoSuficiente(double monto) {
+        return monto <= saldoActual;
     }
 
     public void transferir(Cuenta cuentaDestino, double monto) {
-        if (this.tipo.equals("corriente") && cuentaDestino.getTipoCuenta().equals("corriente")) {
-            if (monto <= saldoActual) {
-                saldoActual -= monto;
-                cuentaDestino.depositar(monto);
-                Movimiento movimiento = new Movimiento("transferencia", monto, "Transferencia a cuenta " + cuentaDestino.getIdCuenta());
-                movimientos.add(movimiento);
-                cuentaDestino.agregarMovimiento(movimiento);
-            } else {
-                throw new IllegalArgumentException("Saldo insuficiente");
-            }
+    if (this.tipo.equals("corriente") && cuentaDestino.getTipoCuenta().equals("corriente")) {
+        if (monto <= saldoActual) {
+            saldoActual -= monto;
+            cuentaDestino.depositar(monto);
+            Movimiento movimiento = new Movimiento("transferencia", monto, "Transferencia a cuenta " + cuentaDestino.getIdCuenta());
+            movimientos.add(movimiento);
+            cuentaDestino.agregarMovimiento(movimiento);
         } else {
-            throw new IllegalArgumentException("Tipo de cuenta no válido para transferencia");
+            throw new IllegalArgumentException("Saldo insuficiente");
         }
+    } else {
+        throw new IllegalArgumentException("Tipo de cuenta no válido para transferencia");
     }
+}
 
     public void agregarMovimiento(Movimiento movimiento) {
         movimientos.add(movimiento);

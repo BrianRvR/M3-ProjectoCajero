@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PantallaTransferenciaController">
+   <children>
+      <ImageView fitHeight="453.0" fitWidth="561.0" layoutX="-8.0" layoutY="-7.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/marcocajero.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nombreUsuarioLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="91.0" layoutY="96.0" prefHeight="30.0" prefWidth="82.0" text="nombre" textAlignment="CENTER" />
+      <Button fx:id="btnTransferir" layoutX="217.0" layoutY="282.0" mnemonicParsing="false" onAction="#transferir" prefHeight="38.0" prefWidth="110.0" text="Transferir" />
+      <TextField fx:id="txtCuentaDestino" layoutX="300.0" layoutY="144.0" prefHeight="38.0" prefWidth="158.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtMonto" layoutX="194.0" layoutY="219.0" prefHeight="38.0" prefWidth="158.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtCuentaOrigen" layoutX="94.0" layoutY="144.0" prefHeight="38.0" prefWidth="158.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

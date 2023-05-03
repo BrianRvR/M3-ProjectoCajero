@@ -6,8 +6,9 @@ package com.mycompany.cajeroauto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-/**
+/**setContrasena
  *
  * @author alumne
  */
@@ -29,18 +30,47 @@ public class Cliente {
     public String getPassword() {
         return password;
     }
+    
+    public void setContrasena(String nuevaContrasena) {
+    password = nuevaContrasena;
+    System.out.println("Contraseña actualizada: " + password);
+    }
+    
+   public void actualizarSaldo(double saldoNuevo) {
+        for (Cuenta cuenta : cuentas) {
+            double saldoActual = cuenta.getSaldoActual();
+            if (saldoActual != saldoNuevo) {
+                cuenta.setSaldoActual(saldoNuevo);
+            }
+        }
+    }
 
+   
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof Cliente)) {
+            return false;
+        }
+        Cliente cliente = (Cliente) obj;
+        return Objects.equals(nombreUsuario, cliente.nombreUsuario)
+                && Objects.equals(password, cliente.password);
+    }
+    
+    
     public List<Cuenta> getCuentas() {
         return cuentas;
     }
-    public Cuenta buscarCuenta(String idCuenta) {
-    for (Cuenta cuenta : cuentas) {
-        if (cuenta.getIdCuenta().equals(idCuenta)) {
-            return cuenta;
+    public Cuenta buscarCuenta(int idCuenta) {
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta.getIdCuenta()==(idCuenta)) {
+                return cuenta;
+            }
         }
+        return null;
     }
-    return null;
-}
 
 
     public void agregarCuenta(Cuenta cuenta) {
@@ -51,17 +81,17 @@ public class Cliente {
         cuentas.remove(cuenta);
     }
     
-    public double obtenerSaldoTotal() {
+    public double obtenerSaldoTotalCuentas() {
     double saldoTotal = 0;
     for (Cuenta cuenta : cuentas) {
         saldoTotal += cuenta.getSaldoActual();
     }
     return saldoTotal;
-    }
+}
     
-    public Cuenta buscarCuentaPorId(String idCuenta) {
+    public Cuenta buscarCuentaPorId(int idCuenta) {
         for (Cuenta cuenta : cuentas) {
-            if (cuenta.getIdCuenta().equals(idCuenta)) {
+            if (cuenta.getIdCuenta()==(idCuenta)) {
                 return cuenta;
             }
         }
@@ -75,6 +105,24 @@ public class Cliente {
             }
         }
         return null;
+    }
+    
+    public List<CuentaCorriente> getCuentasCorrientes() {
+        List<CuentaCorriente> cuentasCorrientes = new ArrayList<>();
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta instanceof CuentaCorriente) {
+                cuentasCorrientes.add((CuentaCorriente) cuenta);
+            }
+        }
+        return cuentasCorrientes;
+    }    
+     public void agregarMovimientoACuenta(Movimiento movimiento, Cuenta cuenta) {
+        for (Cuenta c : cuentas) {
+            if (c.getIdCuenta() == cuenta.getIdCuenta()) {
+                c.agregarMovimiento(movimiento);
+                break;
+            }
+        }
     }
 
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PantallaCambioContraseñaController">
+   <children>
+      <ImageView fitHeight="453.0" fitWidth="561.0" layoutX="-8.0" layoutY="-7.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/marcocajero.png" />
+         </image>
+      </ImageView>
+      <PasswordField fx:id="contraseñaActualField" layoutX="198.0" layoutY="149.0" />
+      <PasswordField fx:id="contraseñaNuevaField" layoutX="198.0" layoutY="237.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="197.0" layoutY="114.0" prefHeight="26.0" prefWidth="150.0" text="Contraseña Actual" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="197.0" layoutY="206.0" prefHeight="26.0" prefWidth="150.0" text="Nueva Contraseña" />
+      <Button fx:id="cambiarContraseñaButton" layoutX="238.0" layoutY="296.0" mnemonicParsing="false" onAction="#cambiarContraseña" text="Confirmar" />
+      <Button fx:id="CancelarCambioButton" layoutX="83.0" layoutY="88.0" mnemonicParsing="false" onAction="#cancelarCambioContraeña" text="Cancelar" />
+   </children>
+</AnchorPane>

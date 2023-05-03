@@ -16,5 +16,7 @@
       <Button fx:id="btncorriente" layoutX="98.0" layoutY="204.0" mnemonicParsing="false" onAction="#cargarPantallaCorriente" prefHeight="31.0" prefWidth="149.0" text="CORRIENTE" />
       <Button fx:id="btnahorro" layoutX="300.0" layoutY="204.0" mnemonicParsing="false" onAction="#cargarPantallaAhorro" prefHeight="31.0" prefWidth="149.0" text="AHORRO" />
       <Label fx:id="nombreUsuarioLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="145.0" prefHeight="38.0" prefWidth="103.0" text="Label" textAlignment="CENTER" />
+      <Button fx:id="btncambiar" layoutX="209.0" layoutY="292.0" mnemonicParsing="false" onAction="#cambiarContraseña" prefHeight="31.0" prefWidth="126.0" text="Cambiar contraseña" />
+      <Button fx:id="cerrarsesion" layoutX="78.0" layoutY="89.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="31.0" prefWidth="126.0" text="Cerrar Sesión" />
    </children>
 </AnchorPane>

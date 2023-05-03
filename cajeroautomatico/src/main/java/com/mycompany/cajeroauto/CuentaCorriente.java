@@ -11,7 +11,7 @@ package com.mycompany.cajeroauto;
 public class CuentaCorriente extends Cuenta {
     private double limiteDescubierto;
     
-    public CuentaCorriente(String idCuenta, double saldoActual, double limiteDescubierto) {
+    public CuentaCorriente(int idCuenta, double saldoActual, double limiteDescubierto) {
         super(idCuenta, "corriente", saldoActual);
         this.limiteDescubierto = limiteDescubierto;
     }
