@@ -8,29 +8,49 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PantallaTransferenciaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PantallaTransferenciaController">
    <children>
-      <ImageView fitHeight="453.0" fitWidth="561.0" layoutX="-8.0" layoutY="-7.0">
+       <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="100.0" layoutY="397.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="565.0" layoutY="108.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-13.0" preserveRatio="true">
          <image>
             <Image url="@../cajeroautomatico/images/marcocajero.png" />
          </image>
       </ImageView>
-      <Label fx:id="nombreUsuarioLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="91.0" layoutY="96.0" prefHeight="30.0" prefWidth="82.0" text="nombre" textAlignment="CENTER" />
-      <Button fx:id="btnTransferir" layoutX="217.0" layoutY="282.0" mnemonicParsing="false" onAction="#transferir" prefHeight="38.0" prefWidth="110.0" text="Transferir" />
-      <TextField fx:id="txtCuentaDestino" layoutX="300.0" layoutY="144.0" prefHeight="38.0" prefWidth="158.0">
+      <Label fx:id="nombreUsuarioLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="340.0" layoutY="196.0" prefHeight="30.0" prefWidth="82.0" text="nombre" textAlignment="CENTER">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
+         </font></Label>
+      <Button fx:id="transferirButton" layoutX="325.0" layoutY="406.0" mnemonicParsing="false" onAction="#handleTransferirButtonAction" prefHeight="50.0" prefWidth="111.0" text="Transferir">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <TextField fx:id="cuentaDestinoField" layoutX="424.0" layoutY="251.0" prefHeight="40.0" prefWidth="170.0" promptText="Nº Cuenta">
+         <font>
+            <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtMonto" layoutX="194.0" layoutY="219.0" prefHeight="38.0" prefWidth="158.0">
+      <TextField fx:id="montoField" layoutX="302.0" layoutY="325.0" prefHeight="38.0" prefWidth="158.0" promptText="Cantidad">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtCuentaOrigen" layoutX="94.0" layoutY="144.0" prefHeight="38.0" prefWidth="158.0">
+      <TextField fx:id="cuentaOrigenField" editable="false" layoutX="178.0" layoutY="251.0" prefHeight="40.0" prefWidth="170.0">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </TextField>
+      <Button layoutX="120.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleCancelarButtonAction" prefHeight="49.0" prefWidth="149.0" text="Cancelar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

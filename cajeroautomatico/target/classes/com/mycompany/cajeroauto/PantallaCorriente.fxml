@@ -4,17 +4,48 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PantallaCorrienteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PantallaCorrienteController">
    <children>
-      <ImageView fitHeight="453.0" fitWidth="561.0" layoutX="-8.0" layoutY="-7.0">
+       <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="100.0" layoutY="397.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="565.0" layoutY="108.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-13.0" preserveRatio="true">
          <image>
             <Image url="@../cajeroautomatico/images/marcocajero.png" />
          </image>
       </ImageView>
-      <Button layoutX="90.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleDetallesButtonAction" prefHeight="31.0" prefWidth="149.0" text="Saldo" />
-      <Button layoutX="90.0" layoutY="204.0" mnemonicParsing="false" onAction="#handleRetiroButtonAction" prefHeight="31.0" prefWidth="149.0" text="Retirar" />
-      <Button layoutX="90.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleIngresoButtonAction" prefHeight="31.0" prefWidth="149.0" text="Ingresar" />
-      <Button layoutX="297.0" layoutY="204.0" mnemonicParsing="false" onAction="#BotonTransferencia" prefHeight="31.0" prefWidth="149.0" text="Transferir" />
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="213.0" layoutY="216.0" mnemonicParsing="false" onAction="#DetallesBoton" prefHeight="63.0" prefWidth="169.0" text="Saldo">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="213.0" layoutY="290.0" mnemonicParsing="false" onAction="#RetiroBoton" prefHeight="63.0" prefWidth="170.0" text="Retirar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="390.0" layoutY="290.0" mnemonicParsing="false" onAction="#IngresoBoton" prefHeight="63.0" prefWidth="170.0" text="Ingresar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="390.0" layoutY="216.0" mnemonicParsing="false" onAction="#BotonTransferencia" prefHeight="63.0" prefWidth="170.0" text="Transferir">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="302.0" layoutY="364.0" mnemonicParsing="false" onAction="#MovimientosBoton" prefHeight="63.0" prefWidth="170.0" text="Movimientos">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="118.0" layoutY="126.0" mnemonicParsing="false" onAction="#Volveralmenu" prefHeight="63.0" prefWidth="114.0" text="Menú" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

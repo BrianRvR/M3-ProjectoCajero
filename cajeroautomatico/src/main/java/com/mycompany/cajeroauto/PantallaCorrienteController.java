@@ -6,6 +6,7 @@ import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -18,13 +19,13 @@ import javafx.stage.Stage;
 
 public class PantallaCorrienteController {
     
-    
     //private Label info;
     private FXMLLoader loader;
     private RetiroController controller;
     
     private IngresoController ingresoController;
     private PantallaTransferenciaController PantallaTransferenciaController;
+    private MovimientosCuentaController MovimientosCuentaController;
 
 
     private Banco miBanco;
@@ -33,17 +34,19 @@ public class PantallaCorrienteController {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+        someMethod();
     }
+
     public void setBanco(Banco banco) {
         this.miBanco = banco;
     }
-    
+
     public void someMethod() {
         setBanco(App.getBanco());
     }
-    
+
     @FXML
-    private void handleDetallesButtonAction() {
+    private void DetallesBoton() {
         // Obtener cuenta corriente
         Cuenta cuentaCorriente = cliente.buscarCuentaPorTipo("corriente");
         if (cuentaCorriente != null) {
@@ -69,7 +72,7 @@ public class PantallaCorrienteController {
     }
     
     @FXML
-    private void handleRetiroButtonAction() {
+    private void RetiroBoton() {
         // Obtener cuenta corriente
         Cuenta cuentaCorriente = cliente.buscarCuentaPorTipo("corriente");
         if (cuentaCorriente != null) {
@@ -93,23 +96,21 @@ public class PantallaCorrienteController {
 
             // Actualizar el saldo de la cuenta corriente en el controlador de la ventana de Retiro
             controller.actualizarSaldo(cuentaCorriente);
+                // Establecer la cuenta en el controlador de Retiro
+        controller.setCuenta(cuentaCorriente);
 
-            // Establecer la cuenta en el controlador de Retiro
-            controller.setCuenta(cuentaCorriente);
-
-            // Crear una nueva ventana y mostrarla
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } 
-    }
+        // Crear una nueva ventana y mostrarla
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    } 
+}
     
     @FXML
-    private void handleIngresoButtonAction() {
+    private void IngresoBoton() {
         // Obtener cuenta corriente
         Cuenta cuentaCorriente = cliente.buscarCuentaPorTipo("corriente");
         if (cuentaCorriente != null) {
-            // Inicializar el objeto FXMLLoader
             // Inicializar el objeto FXMLLoader
             loader = new FXMLLoader(getClass().getResource("Ingreso.fxml"));
 
@@ -130,69 +131,117 @@ public class PantallaCorrienteController {
             // Establecer la cuenta en el controlador de Ingreso
             ingresoController.setCuenta(cuentaCorriente);
 
+            // Actualizar el saldo de la cuenta corriente en el controlador de la ventana de Ingreso
+            ingresoController.actualizarSaldo(cuentaCorriente);
+
             // Crear una nueva ventana y mostrarla
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
         }
     }
-    
+
     @FXML
-    private void BotonTransferencia(ActionEvent event) throws IOException {
-        List<CuentaCorriente> cuentasCorrientes = cliente.getCuentasCorrientes();
-        if (cuentasCorrientes.isEmpty()) {
+    private void BotonTransferencia() {
+        // Obtener cuenta corriente
+        Cuenta cuentaCorriente = cliente.buscarCuentaPorTipo("corriente");
+        if (cuentaCorriente != null) {
+            // Inicializar el objeto FXMLLoader
+            loader = new FXMLLoader(getClass().getResource("PantallaTransferencia.fxml"));
+
+            // Cargar el archivo FXML de Deposito
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Obtener el controlador de la ventana de Deposito
+            PantallaTransferenciaController controller = loader.getController();
+
+            // Pasar la instancia de miBanco al controlador de la ventana de Deposito
+            controller.setBanco(miBanco);
+            controller.setCliente(cliente);
+
+            // Actualizar el saldo de la cuenta corriente en el controlador de la ventana de Deposito
+            controller.actualizarSaldo(cuentaCorriente);
+
+            // Establecer la cuenta en el controlador de Deposito
+            controller.setCuenta(cuentaCorriente);
+
+            // Crear una nueva ventana y mostrarla
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+    }
+     @FXML
+    private void MovimientosBoton() {
+        // Obtener la cuenta seleccionada
+        Cuenta cuentaSeleccionada = cliente.buscarCuentaPorTipo("corriente");
+
+        if (cuentaSeleccionada != null) {
+            // Obtener los movimientos de la cuenta seleccionada
+            List<Movimiento> movimientos = cuentaSeleccionada.obtenerMovimientosCuenta();
+
+            // Crear la ventana de MovimientosCuenta y mostrarla
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MovimientosCuenta.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (root != null) {
+                // Obtener el controlador de la ventana de MovimientosCuenta
+                MovimientosCuentaController controller = loader.getController();
+
+                // Pasar la instancia de miBanco al controlador de la ventana de MovimientosCuenta
+                controller.setBanco(miBanco);
+
+                // Pasar los movimientos a la ventana de MovimientosCuenta
+                controller.setMovimientos(movimientos);
+
+                // Crear una nueva ventana y mostrarla
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+            }
+        } else {
+            // Mostrar un mensaje de error si no se ha seleccionado una cuenta
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("No tienes cuentas corrientes.");
+            alert.setContentText("Debe seleccionar una cuenta primero.");
             alert.showAndWait();
-        } else {
-            // Cargar la pantalla de transferencia
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("PantallaTransferencia.fxml"));
-            Parent root = loader.load();
-            PantallaTransferenciaController controller = loader.getController();
-
-            // Obtener la cuenta corriente seleccionada (si solo tiene una, se selecciona automáticamente)
-            CuentaCorriente cuentaOrigen;
-            if (cuentasCorrientes.size() == 1) {
-                cuentaOrigen = cuentasCorrientes.get(0);
-            } else {
-                ChoiceDialog<CuentaCorriente> dialog = new ChoiceDialog<>(cuentasCorrientes.get(0), cuentasCorrientes);
-                dialog.setTitle("Seleccionar cuenta corriente");
-                dialog.setHeaderText(null);
-                dialog.setContentText("Seleccione la cuenta corriente a utilizar:");
-
-                Optional<CuentaCorriente> result = dialog.showAndWait();
-                if (result.isPresent()) {
-                    cuentaOrigen = result.get();
-                } else {
-                    return;
-                }
-            }
-
-            controller.setCliente(cliente);
-            controller.setCuentaOrigen(cuentaOrigen.getIdCuenta());
-            controller.setBanco(miBanco); // Pasar la instancia del objeto Banco al controlador de la pantalla de transferencia
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
         }
+        
+        
     }
-
-
-
-
-
-
     
     @FXML
-    private void handleCerrarSesionButtonAction() throws IOException {
-        App.setRoot("primary");
+    private void Volveralmenu(ActionEvent event) {
+        // Cerrar la ventana actual
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        // Abrir la ventana anterior (en este caso, SecondaryController)
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("secondary.fxml"));
+        Stage secondaryStage = new Stage();
+        try {
+            Parent root = loader.load();
+            SecondaryController controller = loader.getController();
+            controller.setCliente(cliente);
+            controller.setBanco(miBanco);
+            secondaryStage.setScene(new Scene(root));
+            secondaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 }
-
+ 
     
 

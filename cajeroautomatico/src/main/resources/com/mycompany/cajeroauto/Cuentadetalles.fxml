@@ -5,18 +5,34 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.DetallesCuenta">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.DetallesCuenta">
    <children>
-      <ImageView fitHeight="453.0" fitWidth="561.0" layoutX="-8.0" layoutY="-7.0">
+      <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-13.0" preserveRatio="true">
          <image>
             <Image url="@../cajeroautomatico/images/marcocajero.png" />
          </image>
       </ImageView>
-      <Button layoutX="104.0" layoutY="321.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="31.0" prefWidth="66.0" text="Volver" />
-      <Label fx:id="idCuentaLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="281.0" layoutY="92.0" prefHeight="38.0" prefWidth="151.0" text="Label" textAlignment="CENTER" />
-      <Label fx:id="saldoLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="92.0" prefHeight="38.0" prefWidth="151.0" text="Label" textAlignment="CENTER" />
-      <Label fx:id="saldoTotalLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="200.0" prefHeight="38.0" prefWidth="250.0" text="Label" textAlignment="CENTER" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="161.0" prefHeight="38.0" prefWidth="250.0" text="Saldo total de todas las cuentas" textAlignment="CENTER" />
+      <Button layoutX="331.0" layoutY="389.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="50.0" prefWidth="111.0" text="Volver">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label fx:id="idCuentaLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="410.0" layoutY="181.0" prefHeight="38.0" prefWidth="202.0" text="Label" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="saldoLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="181.0" prefHeight="38.0" prefWidth="202.0" text="Label" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="saldoTotalLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" layoutY="307.0" prefHeight="38.0" prefWidth="250.0" text="Label" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="249.0" layoutY="253.0" prefHeight="38.0" prefWidth="275.0" text="Saldo total de todas las cuentas" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
    </children>
 </AnchorPane>

@@ -1,22 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.SecondaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.SecondaryController">
    <children>
-      <ImageView fitHeight="453.0" fitWidth="561.0" layoutX="-8.0" layoutY="-7.0">
+      <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="100.0" layoutY="397.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="565.0" layoutY="108.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btncorriente" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="175.0" layoutY="268.0" mnemonicParsing="false" onAction="#cargarPantallaCorriente" prefHeight="49.0" prefWidth="149.0" text="CORRIENTE">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="btnahorro" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="450.0" layoutY="268.0" mnemonicParsing="false" onAction="#cargarPantallaAhorro" prefHeight="49.0" prefWidth="149.0" text="AHORRO">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label fx:id="nombreUsuarioLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="312.0" layoutY="211.0" prefHeight="38.0" prefWidth="149.0" text="Usuario" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Button fx:id="btncambiar" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="279.0" layoutY="397.0" mnemonicParsing="false" onAction="#cambiarContraseña" prefHeight="49.0" prefWidth="216.0" text="Cambiar Contraseña" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="cerrarsesion" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="113.0" layoutY="122.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="49.0" prefWidth="149.0" text="Cerrar Sesión">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-13.0" preserveRatio="true">
          <image>
             <Image url="@../cajeroautomatico/images/marcocajero.png" />
          </image>
       </ImageView>
-      <Button fx:id="btncorriente" layoutX="98.0" layoutY="204.0" mnemonicParsing="false" onAction="#cargarPantallaCorriente" prefHeight="31.0" prefWidth="149.0" text="CORRIENTE" />
-      <Button fx:id="btnahorro" layoutX="300.0" layoutY="204.0" mnemonicParsing="false" onAction="#cargarPantallaAhorro" prefHeight="31.0" prefWidth="149.0" text="AHORRO" />
-      <Label fx:id="nombreUsuarioLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="145.0" prefHeight="38.0" prefWidth="103.0" text="Label" textAlignment="CENTER" />
-      <Button fx:id="btncambiar" layoutX="209.0" layoutY="292.0" mnemonicParsing="false" onAction="#cambiarContraseña" prefHeight="31.0" prefWidth="126.0" text="Cambiar contraseña" />
-      <Button fx:id="cerrarsesion" layoutX="78.0" layoutY="89.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="31.0" prefWidth="126.0" text="Cerrar Sesión" />
    </children>
 </AnchorPane>

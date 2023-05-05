@@ -1,5 +1,6 @@
 package com.mycompany.cajeroauto;
 
+import java.io.FileNotFoundException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -18,10 +20,10 @@ public class App extends Application {
     private static Banco miBanco;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, FileNotFoundException, ParseException {
         // Cargar clientes desde el archivo CSV"src/main/java/com/mycompany/csv/clientes_cuentas.csv"
         miBanco = new Banco("Mi Banco", "src/main/java/com/mycompany/csv/clientes_cuentas.csv"); // Crear instancia de Banco con clientes y cuentas del archivo CSV
-        scene = new Scene(loadFXML("primary"), 545.0, 438.0);
+        scene = new Scene(loadFXML("primary"), 773.0, 614.0);  
         stage.setScene(scene);
         stage.show();
     }

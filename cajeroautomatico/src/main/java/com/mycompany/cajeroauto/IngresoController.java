@@ -33,13 +33,13 @@ public class IngresoController implements Initializable {
 
     @FXML
     private TextField montoTextField;
-    
+
     @FXML
-    private Button ingesp20Button;
-    
+    private Button ingreso20Button;
+
     @FXML
     private Button ingreso50Button;
-    
+
     @FXML
     private Button ingreso100Button;
 
@@ -61,6 +61,8 @@ public class IngresoController implements Initializable {
 
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
+        actualizarSaldo(cuenta); // Actualizar el saldo de la cuenta en la ventana de la aplicación
+        saldoActualLabel.setText("$ " + cuenta.getSaldoActual()); // Asignar el saldo actual de la cuenta a la etiqueta correspondiente
     }
 
     public void actualizarSaldo(Cuenta cuenta) {
@@ -74,13 +76,21 @@ public class IngresoController implements Initializable {
             System.err.println("El objeto miBanco es nulo.");
             return;
         }
-        
+
         double monto = Double.parseDouble(montoTextField.getText());
 
-        if (monto <= 0) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
+        if (monto % 10 != 0) {
+            Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Error");
-            alert.setContentText("El monto a ingresar debe ser mayor a cero");
+            alert.setContentText("El monto a ingresar debe ser en billetes de $10");
+            alert.showAndWait();
+            return;
+        }
+
+        if (monto <= 0) {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setContentText("El monto a ingresar debe ser mayor que cero");
             alert.showAndWait();
             return;
         }
@@ -94,33 +104,46 @@ public class IngresoController implements Initializable {
             e.printStackTrace();
         }
 
+        // Actualizar el saldo de la cuenta en la ventana de la aplicación
+        actualizarSaldo(cuenta);
+
+        // Desglosar el monto en billetes de $100, $50 y $20
+        int cantidadBilletes100 = (int) (monto / 100);
+        int cantidadBilletes50 = (int) ((monto % 100) / 50);
+        int cantidadBilletes20 = (int) (((monto % 100) % 50) / 20);
+
         // Mostrar el mensaje de ingreso exitoso
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Ingreso exitoso");
         alert.setHeaderText("Ingreso realizado con éxito");
-        alert.setContentText("Monto ingresado: $" + monto);
-        alert.showAndWait();
-
-        // Cerrar la ventana de ingreso
+        alert.setContentText("Billetes de $100: " + cantidadBilletes100 + "\nBilletes de $50: " + cantidadBilletes50 + "\nBilletes de $20: " + cantidadBilletes20); alert.showAndWait();
+         // Cerrar la ventana de ingreso
         Stage stage = (Stage) saldoActualLabel.getScene().getWindow();
         stage.close();
-    }
-    
-    @FXML
-    private void handleIngreso20ButtonAction(ActionEvent event) {
-        montoTextField.setText("20");
-        handleIngresarButtonAction(event);
-    }
+        }
 
-    @FXML
-    private void handleIngreso50ButtonAction(ActionEvent event) {
-        montoTextField.setText("50");
-         handleIngresarButtonAction(event);
-    }
+        @FXML
+        private void handleCancelarButtonAction(ActionEvent event) {
+            // Cerrar la ventana de ingreso
+            Stage stage = (Stage) saldoActualLabel.getScene().getWindow();
+            stage.close();
+        }
 
-    @FXML
-    private void handleIngreso100ButtonAction(ActionEvent event) {
-        montoTextField.setText("100");
-         handleIngresarButtonAction(event);
-    }
-}
+        @FXML
+        private void handleIngreso20ButtonAction(ActionEvent event) {
+            montoTextField.setText("20");
+            handleIngresarButtonAction(event);
+        }
+
+        @FXML
+        private void handleIngreso50ButtonAction(ActionEvent event) {
+            montoTextField.setText("50");
+            handleIngresarButtonAction(event);
+        }
+
+        @FXML
+        private void handleIngreso100ButtonAction(ActionEvent event) {
+            montoTextField.setText("100");
+            handleIngresarButtonAction(event);
+        }        
+    }  

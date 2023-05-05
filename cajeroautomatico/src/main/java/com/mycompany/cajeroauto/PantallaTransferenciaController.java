@@ -5,96 +5,113 @@
 package com.mycompany.cajeroauto;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  *
  * @author brian
  */
 public class PantallaTransferenciaController {
-    
+
     @FXML
     private Label nombreUsuarioLabel;
-    
     @FXML
-    private Button btnTransferir;
-    
+    private Button transferirButton;
     @FXML
-    private Button cerrarsesion;
-    
+    private TextField montoField;
     @FXML
-    private TextField txtCuentaOrigen;
-    
+    private TextField cuentaDestinoField;
     @FXML
-    private TextField txtCuentaDestino;
-    
-    @FXML
-    private TextField txtMonto;
-    
-    private Cliente cliente;
-    
-    private Banco miBanco = App.getBanco();
-    
-    public void setCuentaOrigen(int numeroCuenta) {
-        txtCuentaOrigen.setText(Integer.toString(numeroCuenta));
-    }
+    public TextField cuentaOrigenField;
 
-    public void setCliente(Cliente cliente) {
-        if (cliente != null) {
-            this.cliente = cliente;
-            nombreUsuarioLabel.setText(cliente.getNombreUsuario());
-        } else {
-            // Manejar caso de cliente nulo
-        }
-    }
-    
+    private Banco miBanco;
+    private Cliente cliente;
+    private Cuenta cuentaOrigen;
+
     public void setBanco(Banco banco) {
         this.miBanco = banco;
     }
-    
+
+    public void setCliente(Cliente cliente) {
+    if (cliente != null) {
+        this.cliente = cliente;
+        nombreUsuarioLabel.setText(cliente.getNombreUsuario());
+    } else {
+        // Manejar caso de cliente nulo
+    }
+}
+
+    public void setCuenta(Cuenta cuenta) {
+        cuentaOrigenField.setText(Integer.toString(cuenta.getIdCuenta()));
+        cuentaOrigen = cuenta;
+    }
+
+    public void actualizarSaldo(Cuenta cuenta) {
+        cuentaOrigenField.setText(Integer.toString(cuenta.getIdCuenta()));
+    }
+
     @FXML
-    private void transferir(ActionEvent event) throws IOException {
-        // Obtener los valores de los campos de texto
-        int idCuentaOrigen = Integer.parseInt(txtCuentaOrigen.getText());
-        int idCuentaDestino = Integer.parseInt(txtCuentaDestino.getText());
-        double monto = Double.parseDouble(txtMonto.getText());
-        
-        // Buscar las cuentas de origen y destino
-        Cuenta cuentaOrigen = null;
-        Cuenta cuentaDestino = null;
-        for (Cliente cliente : miBanco.getClientes()) {
-            cuentaOrigen = cliente.buscarCuentaPorId(idCuentaOrigen);
-            cuentaDestino = cliente.buscarCuentaPorId(idCuentaDestino);
-            if (cuentaOrigen != null && cuentaDestino != null) {
-                break;
+    private void handleTransferirButtonAction(ActionEvent event) {
+        // Obtener el monto a transferir
+        double monto = Double.parseDouble(montoField.getText());
+
+        // Obtener el ID de la cuenta corriente de destino
+        int idCuentaDestino = Integer.parseInt(cuentaDestinoField.getText());
+
+        Cuenta cuentaDestino = miBanco.buscarCuentaPorIdTipo(idCuentaDestino, "corriente");
+        Cliente clienteDestino = cuentaDestino != null ? miBanco.buscarClientePorCuenta(cuentaDestino) : null;
+
+        if (cuentaOrigen != null && cuentaDestino != null && clienteDestino != null && !clienteDestino.equals(cliente)) {
+            // Transferir el monto de la cuenta origen a la cuenta destino
+            try {
+                miBanco.transferirEntreCuentas(cuentaOrigen.getIdCuenta(), cuentaDestino.getIdCuenta(), monto);
+            } catch (IOException e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Error al realizar la transferencia.");
+                alert.showAndWait();
+                return;
             }
+
+            // Mostrar mensaje de éxito
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Transferencia realizada");
+            alert.setHeaderText(null);
+            alert.setContentText("La transferencia se ha realizado correctamente.");
+            alert.showAndWait();
+
+            // Cerrar la ventana actual
+            Stage stage = (Stage) transferirButton.getScene().getWindow();
+            stage.close();
+        } else {
+            // Mostrar mensaje de error si la cuenta de destino no se encontró o pertenece al mismo cliente
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("La cuenta corriente de destino no se encontró o pertenece al mismo cliente.");
+            alert.showAndWait();
+            return;
         }
-        
-        // Verificar que las cuentas existan
-        if (cuentaOrigen == null || cuentaDestino == null) {
-            throw new IllegalArgumentException("Cuenta origen o destino no encontrada");
-        }
-        
-        // Realizar la transferencia entre las cuentas
-        miBanco.transferirEntreCuentas(cuentaOrigen, cuentaDestino, monto);
-        
-        // Mostrar mensaje de éxito en la transferencia
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Transferencia realizada");
-        alert.setHeaderText(null);
-        alert.setContentText("La transferencia se realizó correctamente.");
-        alert.showAndWait();
-        
-        // Limpiar los campos de texto
-        txtCuentaOrigen.setText("");
-        txtCuentaDestino.setText("");
-        txtMonto.setText("");
     }
     
+    @FXML
+    private void handleCancelarButtonAction(ActionEvent event) {
+        // Cerrar la ventana actual
+        Stage stage = (Stage) transferirButton.getScene().getWindow();
+        stage.close();
+    }
 }

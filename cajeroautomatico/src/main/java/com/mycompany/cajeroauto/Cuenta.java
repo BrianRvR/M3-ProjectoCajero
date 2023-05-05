@@ -20,11 +20,11 @@ public class Cuenta {
     private List<Movimiento> movimientos;
 
     public Cuenta(int idCuenta, String tipo, double saldoActual) {
-        this.idCuenta = idCuenta;
-        this.tipo = tipo;
-        this.saldoActual = saldoActual;
-        this.movimientos = new ArrayList<>();
-    }
+    this.idCuenta = idCuenta;
+    this.tipo = tipo;
+    this.saldoActual = saldoActual;
+    this.movimientos = new ArrayList<>();
+}
 
     public int getIdCuenta() {
         return idCuenta;
@@ -34,6 +34,7 @@ public class Cuenta {
         return tipo;
     }
 
+        
     public double getSaldoActual() {
         return saldoActual;
     }
@@ -44,53 +45,48 @@ public class Cuenta {
         }
 
         public void actualizarSaldo() {
-        double saldoActual = 0.0;
-        for (Movimiento movimiento : movimientos) {
-            saldoActual += movimiento.getMonto();
-        }
-        setSaldoActual(saldoActual);
-
-        System.out.println("Actualizando saldo en archivo CSV...");
-        try {
-            Banco.actualizarInfoCuentaCSV(this, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
-            System.out.println("Saldo actualizado en archivo CSV.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    saldoActual = 0.0;
+    for (Movimiento movimiento : movimientos) {
+        saldoActual += movimiento.getMonto();
     }
+    System.out.println("Saldo actualizado en cuenta: " + saldoActual);
+
+    System.out.println("Actualizando saldo en archivo CSV...");
+    try {
+        Banco.actualizarInfoCuentaCSV(this, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
+        System.out.println("Saldo actualizado en archivo CSV.");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 
     public void retirar(double monto) {
-        if (monto <= 0) {
-            throw new IllegalArgumentException("Monto a retirar debe ser mayor que cero");
-        }
-        if (monto <= saldoActual) {
-            saldoActual -= monto;
-            Movimiento movimiento = new Movimiento("retiro", monto, "Retiro de cuenta");
-            movimientos.add(movimiento);
-            actualizarSaldo(); // Llamar al método para actualizar el saldo de la cuenta
-            System.out.println("Retiro de " + monto + " realizado correctamente.");
-
-            System.out.println("Actualizando saldo en archivo CSV...");
-            try {
-                Banco.actualizarInfoCuentaCSV(this, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
-                System.out.println("Saldo actualizado en archivo CSV.");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            throw new IllegalArgumentException("Saldo insuficiente");
-        }
+    if (monto <= 0) {
+        throw new IllegalArgumentException("Monto a retirar debe ser mayor que cero");
     }
-    
-    public void ingresar(double monto) {
-        if (monto <= 0) {
-            throw new IllegalArgumentException("Monto a ingresar debe ser mayor que cero");
-        }
+    if (monto > saldoActual) {
+        throw new IllegalArgumentException("Saldo insuficiente");
+    }
+    saldoActual -= monto;
+    Movimiento movimiento = new Movimiento("retiro", monto, "Retiro de cuenta");
+    movimientos.add(movimiento);
+    setSaldoActual(saldoActual); // actualizar el saldo de la cuenta
+    System.out.println("Retiro de " + monto + " realizado correctamente.");
 
+    System.out.println("Actualizando saldo en archivo CSV...");
+    try {
+        Banco.actualizarInfoCuentaCSV(this, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
+        System.out.println("Saldo actualizado en archivo CSV.");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+    public void ingresar(double monto) {
         saldoActual += monto;
         Movimiento movimiento = new Movimiento("ingreso", monto, "Ingreso a cuenta");
         movimientos.add(movimiento);
-        actualizarSaldo(); // Llamar al método para actualizar el saldo de la cuenta
+        setSaldoActual(saldoActual); // actualizar el saldo de la cuenta
         System.out.println("Ingreso de " + monto + " realizado correctamente.");
 
         System.out.println("Actualizando saldo en archivo CSV...");
@@ -105,6 +101,12 @@ public class Cuenta {
     public List<Movimiento> getMovimientos() {
         return movimientos;
     }
+    
+    public List<Movimiento> obtenerMovimientosCuenta() {
+        return this.movimientos;
+    }
+    
+    
 
     public void depositar(double monto) {
         saldoActual += monto;

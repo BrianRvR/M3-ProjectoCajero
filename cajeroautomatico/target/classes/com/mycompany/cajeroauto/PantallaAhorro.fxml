@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PantallaAhorroController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PantallaAhorroController">
    <children>
-      <ImageView fitHeight="453.0" fitWidth="561.0" layoutX="-8.0" layoutY="-7.0">
+       <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="100.0" layoutY="397.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="565.0" layoutY="108.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-13.0" preserveRatio="true">
          <image>
             <Image url="@../cajeroautomatico/images/marcocajero.png" />
          </image>
       </ImageView>
-      <Button fx:id="btncorriente" layoutX="98.0" layoutY="204.0" mnemonicParsing="false" onAction="#cargarPantallaCorriente" prefHeight="31.0" prefWidth="149.0" text="CORRIENTE" />
-      <Button fx:id="btnahorro" layoutX="300.0" layoutY="204.0" mnemonicParsing="false" onAction="#cargarPantallaAhorro" prefHeight="31.0" prefWidth="149.0" text="AHORRO" />
-      <Label fx:id="nombreUsuarioLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="145.0" prefHeight="38.0" prefWidth="103.0" text="Label" textAlignment="CENTER" />
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="207.0" layoutY="228.0" mnemonicParsing="false" onAction="#DetallesBoton" prefHeight="63.0" prefWidth="169.0" text="Saldo">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="396.0" layoutY="228.0" mnemonicParsing="false" onAction="#RetiroBoton" prefHeight="63.0" prefWidth="169.0" text="Retirar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="207.0" layoutY="323.0" mnemonicParsing="false" onAction="#IngresoBoton" prefHeight="63.0" prefWidth="169.0" text="Ingresar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="396.0" layoutY="323.0" mnemonicParsing="false" onAction="#MovimientosBoton" prefHeight="63.0" prefWidth="169.0" text="Movimientos">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="119.0" layoutY="125.0" mnemonicParsing="false" onAction="#Volveralmenu" prefHeight="63.0" prefWidth="114.0" text="Menú">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

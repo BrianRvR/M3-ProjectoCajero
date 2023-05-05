@@ -16,6 +16,11 @@ public class CuentaCorriente extends Cuenta {
         this.limiteDescubierto = limiteDescubierto;
     }
     
+    @Override
+    public String getTipoCuenta() {
+        return "corriente";
+    }
+    
     public double getLimiteDescubierto() {
         return limiteDescubierto;
     }
@@ -25,3 +30,4 @@ public class CuentaCorriente extends Cuenta {
     }
 }
 
+   

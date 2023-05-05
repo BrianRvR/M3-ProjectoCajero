@@ -6,19 +6,48 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PantallaCambioContraseñaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PantallaCambioContraseñaController">
    <children>
-      <ImageView fitHeight="453.0" fitWidth="561.0" layoutX="-8.0" layoutY="-7.0">
+       <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="100.0" layoutY="397.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="565.0" layoutY="108.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-12.0" preserveRatio="true">
          <image>
             <Image url="@../cajeroautomatico/images/marcocajero.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="contraseñaActualField" layoutX="198.0" layoutY="149.0" />
-      <PasswordField fx:id="contraseñaNuevaField" layoutX="198.0" layoutY="237.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="197.0" layoutY="114.0" prefHeight="26.0" prefWidth="150.0" text="Contraseña Actual" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="197.0" layoutY="206.0" prefHeight="26.0" prefWidth="150.0" text="Nueva Contraseña" />
-      <Button fx:id="cambiarContraseñaButton" layoutX="238.0" layoutY="296.0" mnemonicParsing="false" onAction="#cambiarContraseña" text="Confirmar" />
-      <Button fx:id="CancelarCambioButton" layoutX="83.0" layoutY="88.0" mnemonicParsing="false" onAction="#cancelarCambioContraeña" text="Cancelar" />
+      <PasswordField fx:id="contraseñaActualField" layoutX="291.0" layoutY="226.0">
+         <font>
+            <Font size="18.0" />
+         </font></PasswordField>
+      <PasswordField fx:id="contraseñaNuevaField" layoutX="292.0" layoutY="321.0">
+         <font>
+            <Font size="18.0" />
+         </font></PasswordField>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="327.0" layoutY="188.0" prefHeight="26.0" prefWidth="150.0" text="Contraseña Actual">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="328.0" layoutY="293.0" prefHeight="26.0" prefWidth="150.0" text="Nueva Contraseña">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Button fx:id="cambiarContraseñaButton" layoutX="328.0" layoutY="397.0" mnemonicParsing="false" onAction="#cambiarContraseña" prefHeight="49.0" prefWidth="149.0" text="Confirmar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="CancelarCambioButton" layoutX="119.0" layoutY="127.0" mnemonicParsing="false" onAction="#cancelarCambioContraeña" prefHeight="49.0" prefWidth="149.0" text="Cancelar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

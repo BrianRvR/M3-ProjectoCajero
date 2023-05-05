@@ -1,5 +1,5 @@
 usuario,contraseña,cuenta,tipo,saldo
-jose;12345;1;corriente;1000.00
-jose;12345;2;ahorro;5.000,00
-aurelio;aurelio123;3;corriente;2.000,00
-aurelio;aurelio123;4;ahorro;10.000,00
+Jose Perez;12345;123456789;corriente;440.00
+Jose Perez;12345;876543210;ahorro;390.00
+Aurelio Picazzo;aurelio123;912345678;corriente;349.00
+Aurelio Picazzo;aurelio123;865432101;ahorro;416.00

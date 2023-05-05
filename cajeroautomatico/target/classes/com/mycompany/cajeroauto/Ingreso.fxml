@@ -8,34 +8,54 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.IngresoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.IngresoController">
    <children>
-      <ImageView fitHeight="453.0" fitWidth="561.0" layoutX="-8.0" layoutY="-7.0">
+       <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="100.0" layoutY="397.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="565.0" layoutY="108.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-13.0" preserveRatio="true">
          <image>
             <Image url="@../cajeroautomatico/images/marcocajero.png" />
          </image>
       </ImageView>
-      <Label fx:id="saldoActualLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="91.0" layoutY="96.0" prefHeight="30.0" prefWidth="82.0" text="saldo" textAlignment="CENTER" />
-      <Button fx:id="retiroButton" layoutX="217.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleIngresarButtonAction" prefHeight="38.0" prefWidth="110.0" text="Ingresar" />
-      <Button fx:id="retiro20Button" layoutX="91.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleIngreso20ButtonAction" prefHeight="62.0" prefWidth="110.0" text="20€">
+      <Label fx:id="saldoActualLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="345.0" layoutY="196.0" prefHeight="30.0" prefWidth="82.0" text="saldo" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font></Label>
+      <Button fx:id="retiroButton" layoutX="312.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleIngresarButtonAction" prefHeight="49.0" prefWidth="149.0" text="Ingresar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="retiro20Button" layoutX="206.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleIngreso20ButtonAction" prefHeight="62.0" prefWidth="110.0" text="20€">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="retiro50Button" layoutX="217.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleIngreso50ButtonAction" prefHeight="62.0" prefWidth="110.0" text="50€">
+      <Button fx:id="retiro50Button" layoutX="332.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleIngreso50ButtonAction" prefHeight="62.0" prefWidth="110.0" text="50€">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="retiro100Button" layoutX="342.0" layoutY="188.0" mnemonicParsing="false" onAction="#handleIngreso100ButtonAction" prefHeight="62.0" prefWidth="110.0" text="100€">
+      <Button fx:id="retiro100Button" layoutX="457.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleIngreso100ButtonAction" prefHeight="62.0" prefWidth="110.0" text="100€">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <TextField fx:id="montoTextField" layoutX="193.0" layoutY="126.0" prefHeight="38.0" prefWidth="158.0">
+      <TextField fx:id="montoTextField" alignment="CENTER" layoutX="307.0" layoutY="236.0" prefHeight="38.0" prefWidth="158.0" promptText="Cantidad">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </TextField>
+      <Button layoutX="120.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleCancelarButtonAction" prefHeight="49.0" prefWidth="149.0" text="Cancelar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

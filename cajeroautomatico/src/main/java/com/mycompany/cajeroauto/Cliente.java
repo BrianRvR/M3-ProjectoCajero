@@ -16,6 +16,8 @@ public class Cliente {
     private String nombreUsuario;
     private String password;
     private List<Cuenta> cuentas;
+    private boolean autenticado;
+
 
     public Cliente(String nombreUsuario, String password) {
         this.nombreUsuario = nombreUsuario;
@@ -43,6 +45,14 @@ public class Cliente {
                 cuenta.setSaldoActual(saldoNuevo);
             }
         }
+    }
+   
+   public void setAutenticado(boolean autenticado) {
+        this.autenticado = autenticado;
+    }
+
+    public boolean isAutenticado() {
+        return autenticado;
     }
 
    
@@ -89,9 +99,9 @@ public class Cliente {
     return saldoTotal;
 }
     
-    public Cuenta buscarCuentaPorId(int idCuenta) {
+   public Cuenta buscarCuentaPorId(int idCuenta) {
         for (Cuenta cuenta : cuentas) {
-            if (cuenta.getIdCuenta()==(idCuenta)) {
+            if (cuenta.getIdCuenta() == idCuenta) {
                 return cuenta;
             }
         }
@@ -107,15 +117,24 @@ public class Cliente {
         return null;
     }
     
-    public List<CuentaCorriente> getCuentasCorrientes() {
-        List<CuentaCorriente> cuentasCorrientes = new ArrayList<>();
+    public CuentaCorriente getCuentaCorriente() {
         for (Cuenta cuenta : cuentas) {
             if (cuenta instanceof CuentaCorriente) {
-                cuentasCorrientes.add((CuentaCorriente) cuenta);
+                return (CuentaCorriente) cuenta;
             }
         }
-        return cuentasCorrientes;
-    }    
+        return null;
+    }
+    
+    public List<Movimiento> obtenerMovimientosCuenta(int idCuenta) {
+        Cuenta cuenta = buscarCuentaPorId(idCuenta);
+        if (cuenta != null) {
+            return cuenta.getMovimientos();
+        } else {
+            return null;
+        }
+    }
+    
      public void agregarMovimientoACuenta(Movimiento movimiento, Cuenta cuenta) {
         for (Cuenta c : cuentas) {
             if (c.getIdCuenta() == cuenta.getIdCuenta()) {
@@ -124,6 +143,8 @@ public class Cliente {
             }
         }
     }
+     
+     
 
 }
 

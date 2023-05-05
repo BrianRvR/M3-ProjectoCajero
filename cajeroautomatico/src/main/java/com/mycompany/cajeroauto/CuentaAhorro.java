@@ -9,8 +9,24 @@ package com.mycompany.cajeroauto;
  * @author alumne
  */
 public class CuentaAhorro extends Cuenta {
-    public CuentaAhorro(int idCuenta, double saldoActual) {
+    private double tasaInteres;
+
+    public CuentaAhorro(int idCuenta, double saldoActual, double tasaInteres) {
         super(idCuenta, "ahorro", saldoActual);
+        this.tasaInteres = tasaInteres;
+    }
+
+    @Override
+    public String getTipoCuenta() {
+        return "ahorro";
+    }
+
+    public double getTasaInteres() {
+        return tasaInteres;
+    }
+
+    public void setTasaInteres(double tasaInteres) {
+        this.tasaInteres = tasaInteres;
     }
 }
 

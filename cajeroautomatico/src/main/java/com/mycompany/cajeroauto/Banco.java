@@ -14,9 +14,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
 /**
  *
@@ -27,8 +29,9 @@ public class Banco {
     private String nombre;
     private List<Cliente> clientes;
     private List<Cuenta> cuentas;
+    
 
-   public Banco(String nombre, String nombreArchivo) throws FileNotFoundException {
+   public Banco(String nombre, String nombreArchivo) throws FileNotFoundException, ParseException {
         this.nombre = nombre;
         this.clientes = ArchivosClientes.leerClientes("src/main/java/com/mycompany/csv/clientes_cuentas.csv");
         this.cuentas = new ArrayList<>();
@@ -37,6 +40,7 @@ public class Banco {
         for (Cliente cliente : this.clientes) {
             this.cuentas.addAll(cliente.getCuentas());
         }
+        
     }
 
     
@@ -50,6 +54,7 @@ public class Banco {
     // Si no se encuentra un cliente con ese usuario y contraseña, retornar null
         return null;
     }
+    
     
     
     
@@ -224,57 +229,94 @@ public class Banco {
         }
     }
     
-    public void transferirEntreCuentas(Cuenta cuentaOrigen, Cuenta cuentaDestino, double monto) throws IOException {
-    if (cuentaOrigen instanceof CuentaCorriente && cuentaDestino instanceof CuentaCorriente) {
-        Cliente clienteOrigen = null;
-        Cliente clienteDestino = null;
+    public void transferirEntreCuentas(int idCuentaOrigen, int idCuentaDestino, double monto) throws IOException {
+        // Buscar la cuenta de origen en el archivo CSV
+        Cuenta cuentaOrigen = buscarCuentaPorIdTipo(idCuentaOrigen, "corriente");
 
-        // Buscar el cliente de la cuenta origen
-        for (Cliente cliente : clientes) {
-            if (cliente.buscarCuentaPorId(cuentaOrigen.getIdCuenta()) != null) {
-                clienteOrigen = cliente;
-                break;
-            }
+        // Buscar la cuenta de destino en el archivo CSV
+        Cuenta cuentaDestino = buscarCuentaPorIdTipo(idCuentaDestino, "corriente");
+
+        // Verificar que las cuentas existan y sean de tipo corriente
+        if (cuentaOrigen == null || cuentaDestino == null) {
+            throw new IllegalArgumentException("Cuenta no encontrada");
         }
 
-        // Buscar el cliente de la cuenta destino
-        for (Cliente cliente : clientes) {
-            if (cliente.buscarCuentaPorId(cuentaDestino.getIdCuenta()) != null) {
-                clienteDestino = cliente;
-                break;
-            }
-        }
-
-        // Verificar que los clientes y las cuentas existan
-        if (clienteOrigen == null || clienteDestino == null) {
-            throw new IllegalArgumentException("Cliente o cuenta no encontrado");
-        }
-
-        // Transferir el monto de la cuenta origen a la cuenta destino
+        // Realizar la transferencia y actualizar la información en el archivo CSV
         cuentaOrigen.transferir(cuentaDestino, monto);
-
-        // Actualizar la información de la cuenta origen en el archivo CSV
         actualizarInfoCuentaCSV(cuentaOrigen, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
-        
-        // Actualizar la información de la cuenta destino en el archivo CSV
         actualizarInfoCuentaCSV(cuentaDestino, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
 
-        // Agregar el movimiento a la lista de movimientos del cliente de la cuenta origen
-        Movimiento movimientoOrigen = new Movimiento("transferencia", -monto, "Transferencia a cuenta " + cuentaDestino.getIdCuenta());
+        // Agregar los movimientos a las cuentas correspondientes y actualizar la información de los clientes en el archivo CSV
+        Cliente clienteOrigen = buscarClientePorCuenta(cuentaOrigen);
+        Cliente clienteDestino = buscarClientePorCuenta(cuentaDestino);
+        Movimiento movimientoOrigen = new Movimiento("transferencia", -monto, "Transferencia a cuenta " + idCuentaDestino);
+        Movimiento movimientoDestino = new Movimiento("transferencia", monto, "Transferencia desde cuenta " + idCuentaOrigen);
         clienteOrigen.agregarMovimientoACuenta(movimientoOrigen, cuentaOrigen);
-
-        // Agregar el movimiento a la lista de movimientos del cliente de la cuenta destino
-        Movimiento movimientoDestino = new Movimiento("transferencia", monto, "Transferencia desde cuenta " + cuentaOrigen.getIdCuenta());
         clienteDestino.agregarMovimientoACuenta(movimientoDestino, cuentaDestino);
-
-        // Actualizar la información de los clientes en el archivo CSV
-        actualizarInfoClienteCSV(clientes, "src/main/java/com/mycompany/csv/clientes.csv");
-
-    } else {
-        throw new IllegalArgumentException("Solo se permiten transferencias entre cuentas corrientes");
+        actualizarInfoClienteCSV(clientes, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
     }
-}
 
+            // Método para buscar un cliente por su cuenta
+            public Cliente buscarClientePorCuenta(Cuenta cuenta) {
+            for (Cliente cliente : clientes) {
+            if (cliente.buscarCuentaPorId(cuenta.getIdCuenta()) != null) {
+            return cliente;
+            }   
+        }
+        return null;
+        }
+
+    // Método para buscar una cuenta por su ID y tipo en el archivo CSV
+        public Cuenta buscarCuentaPorIdTipo(int idCuenta, String tipoCuenta) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/java/com/mycompany/csv/clientes_cuentas.csv"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] values = line.split(";");
+                if (values.length < 5) {
+                    // La línea no tiene la cantidad de elementos esperados, ignorarla
+                    continue;
+                }
+                int id = Integer.parseInt(values[2]);
+                String tipo = values[3];
+                double saldo = Double.parseDouble(values[4]);
+                if (id == idCuenta && tipo.equals(tipoCuenta)) {
+                    if (tipo.equals("corriente")) {
+                        return new CuentaCorriente(id, saldo, 0);
+                    } else if (tipo.equals("ahorro")) {
+                        return new CuentaAhorro(id, saldo, 0);
+                    }
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    
+    public List<CuentaCorriente> getCuentasCorrientesDeCliente(String nombreUsuario) {
+        List<CuentaCorriente> cuentasCorrientes = new ArrayList<>();
+        Cliente cliente = buscarCliente(nombreUsuario);
+        if (cliente != null) {
+            for (Cuenta cuenta : cliente.getCuentas()) {
+                if (cuenta instanceof CuentaCorriente) {
+                    cuentasCorrientes.add((CuentaCorriente) cuenta);
+                }
+            }
+        }
+        return cuentasCorrientes;
+    }
+    
+    public CuentaCorriente obtenerCuentaCorriente(String nombreUsuario) {
+        Cliente cliente = buscarCliente(nombreUsuario);
+        if (cliente != null) {
+            return cliente.getCuentaCorriente();
+        } else {
+            return null;
+        }
+    }
    
 
 
@@ -320,14 +362,8 @@ public class Banco {
      return null;
  }
 
-    public Cuenta buscarCuentaPorId(int idCuenta) {
-        for (Cuenta cuenta : cuentas) {
-            if (cuenta.getIdCuenta() == idCuenta) {
-                return cuenta;
-            }
-        }
-        return null;
-    }
+        
+    
     public Cuenta buscarCuentaPorTipo(String tipo) {
     for (Cliente cliente : clientes) {
         for (Cuenta cuenta : cliente.getCuentas()) {
@@ -338,14 +374,27 @@ public class Banco {
     }
     return null;
     }
-
-
-
     
     
+    public List<Movimiento> obtenerMovimientosCuenta(int idCuenta) {
+        Cuenta cuenta = buscarCuentaPorId(idCuenta);
+        if (cuenta != null) {
+            return cuenta.getMovimientos();
+        } else {
+            return null;
+        }
+    }
     
-
-
+    public Cuenta buscarCuentaPorId(int idCuenta) {
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta.getIdCuenta() == idCuenta) {
+                return cuenta;
+            }
+        }
+        return null;
+    }
+    
+   
 
     public void agregarClienteConCuentas(String nombreUsuario, String password, List<Cuenta> nuevasCuentas) {
     Cliente cliente = new Cliente(nombreUsuario, password);

@@ -86,21 +86,7 @@ public class SecondaryController {
         // Actualizar el nombre de usuario en la pantalla después de cambiar la contraseña
         nombreUsuarioLabel.setText(cliente.getNombreUsuario());
     }
-    
-    @FXML
-    private void transferir(ActionEvent event) throws IOException {
-        // Cargar la pantalla de transferencia
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PantallaTransferencia.fxml"));
-        Parent root = loader.load();
-        PantallaTransferenciaController controller = loader.getController();
-        controller.setCliente(cliente);
-        controller.setBanco(miBanco); // Pasar la instancia del objeto Banco al controlador de la pantalla de transferencia
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();
-    }
+   
     
     @FXML
     private void cerrarSesion(ActionEvent event) throws IOException {
