@@ -8,7 +8,7 @@ En resumen, la aplicación proporciona a los usuarios una forma rápida y conven
 
 II. Diagrama UML de clases del Cajero Automático
 
-![DIAGRAMA UML M3 drawio](https://user-images.githubusercontent.com/98058479/236583518-6bc94382-c4a0-4398-97a5-5bd4a93a8467.png)
+![DIAGRAMA UML M3 drawio (1)](https://github.com/BrianRvR/M3-ProjectoCajero/assets/98058479/53c5dd5e-01b0-4c79-866c-fbb92ae76850)
 
 
 III. Descripción de las funcionalidades implementadas de la app
