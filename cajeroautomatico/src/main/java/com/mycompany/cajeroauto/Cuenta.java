@@ -98,9 +98,7 @@ public class Cuenta {
         }
     }
     
-    public List<Movimiento> getMovimientos() {
-        return movimientos;
-    }
+
     
     public List<Movimiento> obtenerMovimientosCuenta() {
         return this.movimientos;
@@ -152,7 +150,75 @@ public class Cuenta {
         }
     }
     
-  
+    public void donar(double monto, String asociacion) {
+        if (monto <= 0) {
+            throw new IllegalArgumentException("El monto a donar debe ser mayor que cero");
+        }
+        if (monto > saldoActual) {
+            throw new IllegalArgumentException("Saldo insuficiente");
+        }
+        saldoActual -= monto;
+        Movimiento movimiento = new Movimiento("donacion", monto, "Donación a " + asociacion);
+        movimientos.add(movimiento);
+        setSaldoActual(saldoActual); // actualizar el saldo de la cuenta
+        System.out.println("Donación de " + monto + " a " + asociacion + " realizada correctamente.");
+
+        System.out.println("Actualizando saldo en archivo CSV...");
+        try {
+            Banco.actualizarInfoCuentaCSV(this, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
+            System.out.println("Saldo actualizado en archivo CSV.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void comprarSeguro(double precio, String tipoSeguro) {
+    if (precio <= 0) {
+        throw new IllegalArgumentException("El precio del seguro debe ser mayor que cero");
+    }
+    if (precio > saldoActual) {
+        throw new IllegalArgumentException("Saldo insuficiente");
+    }
+    saldoActual -= precio;
+    Movimiento movimiento = new Movimiento("compra de seguro", precio, "Compra de seguro: " + tipoSeguro);
+    movimientos.add(movimiento);
+    setSaldoActual(saldoActual); // actualizar el saldo de la cuenta
+    System.out.println("Compra de seguro (" + tipoSeguro + ") de " + precio + " realizada correctamente.");
+
+    System.out.println("Actualizando saldo en archivo CSV...");
+    try {
+        Banco.actualizarInfoCuentaCSV(this, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
+        System.out.println("Saldo actualizado en archivo CSV.");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 }
+    public void actualizarSaldoDespuesPrestamo(double montoPrestamo) {
+    // Actualizar el saldo de la cuenta después de que se apruebe el préstamo
+    double nuevoSaldo = saldoActual + montoPrestamo;
+    setSaldoActual(nuevoSaldo);
+
+    // Crear el movimiento correspondiente al préstamo
+    Movimiento movimientoPrestamo = new Movimiento("Préstamo", montoPrestamo, "Préstamo otorgado");
+    agregarMovimiento(movimientoPrestamo);
+
+    // Actualizar el saldo en el archivo CSV
+    try {
+        Banco.actualizarInfoCuentaCSV(this, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
+        System.out.println("Saldo actualizado en archivo CSV.");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+   
+    
+}
+
+
+
+
+    
+  
+
 
 

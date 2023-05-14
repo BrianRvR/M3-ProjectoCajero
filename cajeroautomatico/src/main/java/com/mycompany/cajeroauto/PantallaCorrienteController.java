@@ -26,7 +26,9 @@ public class PantallaCorrienteController {
     private IngresoController ingresoController;
     private PantallaTransferenciaController PantallaTransferenciaController;
     private MovimientosCuentaController MovimientosCuentaController;
-
+    private DonacionController DonacionController;
+    private SegurosController SegurosController;
+    private PrestamoController PrestamoController;
 
     private Banco miBanco;
 
@@ -176,7 +178,7 @@ public class PantallaCorrienteController {
             stage.show();
         }
     }
-     @FXML
+    @FXML
     private void MovimientosBoton() {
         // Obtener la cuenta seleccionada
         Cuenta cuentaSeleccionada = cliente.buscarCuentaPorTipo("corriente");
@@ -221,7 +223,97 @@ public class PantallaCorrienteController {
         
     }
     
+    
     @FXML
+    private void DonacionBoton() {
+        // Obtener cuenta corriente
+        Cuenta cuentaCorriente = cliente.buscarCuentaPorTipo("corriente");
+        if (cuentaCorriente != null) {
+            // Inicializar el objeto FXMLLoader
+            loader = new FXMLLoader(getClass().getResource("Donacion.fxml"));
+
+            // Cargar el archivo FXML de Donacion
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Obtener el controlador de la ventana de Donacion
+            DonacionController controller = loader.getController();
+
+            // Pasar la instancia de miBanco al controlador de la ventana de Donacion
+            controller.setBanco(miBanco);
+            controller.setCliente(cliente);
+
+            // Actualizar el saldo de la cuenta corriente en el controlador de la ventana de Donacion
+            controller.actualizarSaldo(cuentaCorriente);
+
+            // Establecer la cuenta en el controlador de Donacion
+            controller.setCuenta(cuentaCorriente);
+
+            // Crear una nueva ventana y mostrarla
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+    }
+    @FXML
+    private void SegurosBoton() {
+        // Obtener cuenta corriente
+        Cuenta cuentaCorriente = cliente.buscarCuentaPorTipo("corriente");
+        if (cuentaCorriente != null) {
+            // Inicializar el objeto FXMLLoader
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Seguros.fxml"));
+
+            // Cargar el archivo FXML de Seguros
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Obtener el controlador de la ventana de Seguros
+            SegurosController controller = loader.getController();
+
+            // Pasar la instancia de miBanco y cliente al controlador de la ventana de Seguros
+            controller.setBanco(miBanco);
+            controller.setCliente(cliente);
+
+            // Establecer la cuenta en el controlador de Seguros
+            controller.setCuenta(cuentaCorriente);
+
+            // Crear una nueva ventana y mostrarla
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+    }
+    @FXML
+    private void abrirPrestamoController() {
+        Cuenta cuentaCorriente = cliente.buscarCuentaPorTipo("corriente");
+        if (cuentaCorriente != null) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Prestamo.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        PrestamoController prestamoController = loader.getController();
+        prestamoController.setCuentaCorriente(cuentaCorriente);
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+       }
+        
+    }
+    
+     @FXML
     private void Volveralmenu(ActionEvent event) {
         // Cerrar la ventana actual
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

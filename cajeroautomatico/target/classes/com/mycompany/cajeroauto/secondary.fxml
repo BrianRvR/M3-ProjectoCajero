@@ -8,11 +8,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.SecondaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.SecondaryController">
    <children>
       <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="100.0" layoutY="397.0">
          <image>
             <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-13.0" preserveRatio="true">
+         <image>
+            <Image url="@../cajeroautomatico/images/marcocajero.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="565.0" layoutY="108.0">
@@ -34,7 +39,7 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Label fx:id="nombreUsuarioLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="312.0" layoutY="211.0" prefHeight="38.0" prefWidth="149.0" text="Usuario" textAlignment="CENTER">
+      <Label fx:id="nombreUsuarioLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="279.0" layoutY="208.0" prefHeight="38.0" prefWidth="216.0" text="Usuario" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font></Label>
@@ -49,10 +54,5 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-13.0" preserveRatio="true">
-         <image>
-            <Image url="@../cajeroautomatico/images/marcocajero.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

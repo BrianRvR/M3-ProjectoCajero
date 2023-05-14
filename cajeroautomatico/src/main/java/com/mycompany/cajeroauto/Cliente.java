@@ -16,7 +16,6 @@ public class Cliente {
     private String nombreUsuario;
     private String password;
     private List<Cuenta> cuentas;
-    private boolean autenticado;
 
 
     public Cliente(String nombreUsuario, String password) {
@@ -37,60 +36,16 @@ public class Cliente {
     password = nuevaContrasena;
     System.out.println("Contraseña actualizada: " + password);
     }
-    
-   public void actualizarSaldo(double saldoNuevo) {
-        for (Cuenta cuenta : cuentas) {
-            double saldoActual = cuenta.getSaldoActual();
-            if (saldoActual != saldoNuevo) {
-                cuenta.setSaldoActual(saldoNuevo);
-            }
-        }
-    }
-   
-   public void setAutenticado(boolean autenticado) {
-        this.autenticado = autenticado;
-    }
 
-    public boolean isAutenticado() {
-        return autenticado;
-    }
-
-   
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof Cliente)) {
-            return false;
-        }
-        Cliente cliente = (Cliente) obj;
-        return Objects.equals(nombreUsuario, cliente.nombreUsuario)
-                && Objects.equals(password, cliente.password);
-    }
-    
-    
     public List<Cuenta> getCuentas() {
         return cuentas;
-    }
-    public Cuenta buscarCuenta(int idCuenta) {
-        for (Cuenta cuenta : cuentas) {
-            if (cuenta.getIdCuenta()==(idCuenta)) {
-                return cuenta;
-            }
-        }
-        return null;
     }
 
 
     public void agregarCuenta(Cuenta cuenta) {
         cuentas.add(cuenta);
     }
-
-    public void eliminarCuenta(Cuenta cuenta) {
-        cuentas.remove(cuenta);
-    }
-    
+ 
     public double obtenerSaldoTotalCuentas() {
     double saldoTotal = 0;
     for (Cuenta cuenta : cuentas) {
@@ -117,24 +72,7 @@ public class Cliente {
         return null;
     }
     
-    public CuentaCorriente getCuentaCorriente() {
-        for (Cuenta cuenta : cuentas) {
-            if (cuenta instanceof CuentaCorriente) {
-                return (CuentaCorriente) cuenta;
-            }
-        }
-        return null;
-    }
-    
-    public List<Movimiento> obtenerMovimientosCuenta(int idCuenta) {
-        Cuenta cuenta = buscarCuentaPorId(idCuenta);
-        if (cuenta != null) {
-            return cuenta.getMovimientos();
-        } else {
-            return null;
-        }
-    }
-    
+
      public void agregarMovimientoACuenta(Movimiento movimiento, Cuenta cuenta) {
         for (Cuenta c : cuentas) {
             if (c.getIdCuenta() == cuenta.getIdCuenta()) {

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.DetallesCuenta">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.DetallesCuenta">
    <children>
       <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-13.0" preserveRatio="true">
          <image>
@@ -18,11 +18,11 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Label fx:id="idCuentaLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="410.0" layoutY="181.0" prefHeight="38.0" prefWidth="202.0" text="Label" textAlignment="CENTER">
+      <Label fx:id="idCuentaLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="417.0" layoutY="181.0" prefHeight="38.0" prefWidth="256.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label fx:id="saldoLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="181.0" prefHeight="38.0" prefWidth="202.0" text="Label" textAlignment="CENTER">
+      <Label fx:id="saldoLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="181.0" prefHeight="38.0" prefWidth="202.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font></Label>
@@ -30,7 +30,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="249.0" layoutY="253.0" prefHeight="38.0" prefWidth="275.0" text="Saldo total de todas las cuentas" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="228.0" layoutY="255.0" prefHeight="38.0" prefWidth="317.0" text="Saldo total de todas las cuentas" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font></Label>

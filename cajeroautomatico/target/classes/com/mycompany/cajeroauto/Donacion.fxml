@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.DonacionController">
+   <children>
+       <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="100.0" layoutY="397.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="565.0" layoutY="108.0">
+         <image>
+            <Image url="@../cajeroautomatico/images/particulas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-13.0" preserveRatio="true">
+         <image>
+            <Image url="@../cajeroautomatico/images/marcocajero.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="botonDonar" layoutX="307.0" layoutY="397.0" mnemonicParsing="false" onAction="#donar" prefHeight="50.0" prefWidth="158.0" text="Donar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <TextField fx:id="montoDonacion" layoutX="424.0" layoutY="251.0" prefHeight="40.0" prefWidth="170.0" promptText="Cantidad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="botonCancelar" layoutX="120.0" layoutY="129.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="49.0" prefWidth="149.0" text="Cancelar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <ChoiceBox fx:id="seleccionAsociacion" layoutX="184.0" layoutY="251.0" onDragDetected="#initialize" prefHeight="40.0" prefWidth="170.0" />
+      <Label fx:id="infoAsociacion" layoutX="185.0" layoutY="306.0" prefHeight="79.0" prefWidth="410.0" />
+   </children>
+</AnchorPane>

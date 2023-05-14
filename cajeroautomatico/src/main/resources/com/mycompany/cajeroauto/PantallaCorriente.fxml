@@ -23,29 +23,44 @@
             <Image url="@../cajeroautomatico/images/marcocajero.png" />
          </image>
       </ImageView>
-      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="213.0" layoutY="216.0" mnemonicParsing="false" onAction="#DetallesBoton" prefHeight="63.0" prefWidth="169.0" text="Saldo">
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="217.0" layoutY="189.0" mnemonicParsing="false" onAction="#DetallesBoton" prefHeight="63.0" prefWidth="169.0" text="Saldo">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="213.0" layoutY="290.0" mnemonicParsing="false" onAction="#RetiroBoton" prefHeight="63.0" prefWidth="170.0" text="Retirar">
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="217.0" layoutY="263.0" mnemonicParsing="false" onAction="#RetiroBoton" prefHeight="63.0" prefWidth="170.0" text="Retirar">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="390.0" layoutY="290.0" mnemonicParsing="false" onAction="#IngresoBoton" prefHeight="63.0" prefWidth="170.0" text="Ingresar">
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="394.0" layoutY="263.0" mnemonicParsing="false" onAction="#IngresoBoton" prefHeight="63.0" prefWidth="170.0" text="Ingresar">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="390.0" layoutY="216.0" mnemonicParsing="false" onAction="#BotonTransferencia" prefHeight="63.0" prefWidth="170.0" text="Transferir">
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="394.0" layoutY="189.0" mnemonicParsing="false" onAction="#BotonTransferencia" prefHeight="63.0" prefWidth="170.0" text="Transferir">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="302.0" layoutY="364.0" mnemonicParsing="false" onAction="#MovimientosBoton" prefHeight="63.0" prefWidth="170.0" text="Movimientos">
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="217.0" layoutY="338.0" mnemonicParsing="false" onAction="#MovimientosBoton" prefHeight="63.0" prefWidth="170.0" text="Movimientos">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="118.0" layoutY="126.0" mnemonicParsing="false" onAction="#Volveralmenu" prefHeight="63.0" prefWidth="114.0" text="Menú" textAlignment="CENTER">
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="118.0" layoutY="126.0" mnemonicParsing="false" onAction="#Volveralmenu" prefHeight="56.0" prefWidth="102.0" text="Menú" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font></Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="394.0" layoutY="338.0" mnemonicParsing="false" onAction="#DonacionBoton" prefHeight="63.0" prefWidth="170.0" text="Donaciones">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="394.0" layoutY="411.0" mnemonicParsing="false" onAction="#SegurosBoton" prefHeight="63.0" prefWidth="170.0" text="Seguros">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="216.0" layoutY="411.0" mnemonicParsing="false" onAction="#abrirPrestamoController" prefHeight="63.0" prefWidth="170.0" text="Préstamos">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

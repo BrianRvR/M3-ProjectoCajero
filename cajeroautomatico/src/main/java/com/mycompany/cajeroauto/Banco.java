@@ -42,97 +42,10 @@ public class Banco {
         }
         
     }
-
-    
-    public Cliente login(String usuario, String password) {
-    // Buscar cliente en la lista de clientes del banco
-    for (Cliente cliente : clientes) {
-        if (cliente.getNombreUsuario().equals(usuario) && cliente.getPassword().equals(password)) {
-            return cliente;
-            }
-        }
-    // Si no se encuentra un cliente con ese usuario y contraseña, retornar null
-        return null;
-    }
-    
-    
-    
-    
-    
-    public void retirarDeCuenta(String nombreUsuario, String password, int idCuenta, double monto) throws IOException {
-        // Buscar al cliente
-        Cliente cliente = null;
-        for (Cliente c : clientes) {
-            if (c.getNombreUsuario().equals(nombreUsuario) && c.getPassword().equals(password)) {
-                cliente = c;
-                break;
-            }
-        }
-
-        if (cliente == null) {
-            throw new IllegalArgumentException("Cliente no encontrado");
-        }
-
-        // Buscar la cuenta
-        Cuenta cuenta = cliente.buscarCuenta(idCuenta);
-        if (cuenta == null) {
-            throw new IllegalArgumentException("Cuenta no encontrada");
-        }
-
-        if (monto <= 0) {
-            throw new IllegalArgumentException("Monto a retirar debe ser mayor que cero");
-        }
-
-        // Hacer el retiro
-        cuenta.retirar(monto);
-
-        // Actualizar el saldo de la cuenta en el archivo CSV
-        actualizarInfoClienteCSV(clientes, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
-    }
-    
-    
-    public void ingresarACuenta(String nombreUsuario, String password, int idCuenta, double monto) throws IOException {
-        // Buscar al cliente
-        Cliente cliente = null;
-        for (Cliente c : clientes) {
-            if (c.getNombreUsuario().equals(nombreUsuario) && c.getPassword().equals(password)) {
-                cliente = c;
-                break;
-            }
-        }
-
-        if (cliente == null) {
-            throw new IllegalArgumentException("Cliente no encontrado");
-        }
-
-        // Buscar la cuenta
-        Cuenta cuenta = cliente.buscarCuenta(idCuenta);
-        if (cuenta == null) {
-            throw new IllegalArgumentException("Cuenta no encontrada");
-        }
-
-        if (monto <= 0) {
-            throw new IllegalArgumentException("Monto a ingresar debe ser mayor que cero");
-        }
-
-        // Hacer el ingreso
-        cuenta.ingresar(monto);
-
-        // Actualizar el saldo de la cuenta en el archivo CSV
-        actualizarInfoClienteCSV(clientes, "src/main/java/com/mycompany/csv/clientes_cuentas.csv");
-    }
-    
-    
-    
-    
     public List<Cliente> getClientes() {
     return this.clientes;
     }
-    
-            
-   
-    
-    
+
     public void cambiarContraseñaCliente(Cliente cliente, String contrasenaAntigua, String nuevaContrasena, String archivoClientes) throws IOException {
         // Verificar que el cliente exista en la lista de clientes
         if (!clientes.contains(cliente)) {
@@ -156,7 +69,6 @@ public class Banco {
         // Actualizar la información del cliente en el archivo CSV
         actualizarInfoClienteCSV (listaClientes, archivoClientes);
     }
-    
     
     public static void actualizarInfoClienteCSV(List<Cliente> clientes, String archivoClientes) throws IOException {
         // Leer todo el archivo CSV en una lista de String
@@ -295,37 +207,6 @@ public class Banco {
         return null;
     }
 
-    
-    public List<CuentaCorriente> getCuentasCorrientesDeCliente(String nombreUsuario) {
-        List<CuentaCorriente> cuentasCorrientes = new ArrayList<>();
-        Cliente cliente = buscarCliente(nombreUsuario);
-        if (cliente != null) {
-            for (Cuenta cuenta : cliente.getCuentas()) {
-                if (cuenta instanceof CuentaCorriente) {
-                    cuentasCorrientes.add((CuentaCorriente) cuenta);
-                }
-            }
-        }
-        return cuentasCorrientes;
-    }
-    
-    public CuentaCorriente obtenerCuentaCorriente(String nombreUsuario) {
-        Cliente cliente = buscarCliente(nombreUsuario);
-        if (cliente != null) {
-            return cliente.getCuentaCorriente();
-        } else {
-            return null;
-        }
-    }
-   
-
-
-
-    public void agregarCliente(Cliente cliente) {
-        clientes.add(cliente);
-        
-    }
-
     public Cliente buscarCliente(String nombreUsuario) {
         for (Cliente cliente : clientes) {
             if (cliente.getNombreUsuario().equals(nombreUsuario)) {
@@ -335,9 +216,6 @@ public class Banco {
         return null;
     }
 
-    public void agregarCuenta(Cuenta cuenta) {
-        cuentas.add(cuenta);
-    }
     
     public Cliente buscarClientePorCredenciales(String nombreUsuario, String password) {
     // Buscar al cliente correspondiente en la lista de clientes
@@ -351,18 +229,6 @@ public class Banco {
     return null;
 }
 
-    public Cliente buscarClienteConCuenta(int idCuenta) {
-     for (Cliente cliente : clientes) {
-         for (Cuenta cuenta : cliente.getCuentas()) {
-             if (cuenta.getIdCuenta() == idCuenta) {
-                 return cliente;
-             }
-         }
-     }
-     return null;
- }
-
-        
     
     public Cuenta buscarCuentaPorTipo(String tipo) {
     for (Cliente cliente : clientes) {
@@ -375,36 +241,6 @@ public class Banco {
     return null;
     }
     
-    
-    public List<Movimiento> obtenerMovimientosCuenta(int idCuenta) {
-        Cuenta cuenta = buscarCuentaPorId(idCuenta);
-        if (cuenta != null) {
-            return cuenta.getMovimientos();
-        } else {
-            return null;
-        }
-    }
-    
-    public Cuenta buscarCuentaPorId(int idCuenta) {
-        for (Cuenta cuenta : cuentas) {
-            if (cuenta.getIdCuenta() == idCuenta) {
-                return cuenta;
-            }
-        }
-        return null;
-    }
-    
-   
-
-    public void agregarClienteConCuentas(String nombreUsuario, String password, List<Cuenta> nuevasCuentas) {
-    Cliente cliente = new Cliente(nombreUsuario, password);
-    clientes.add(cliente);
-    for (Cuenta cuenta : nuevasCuentas) {
-        cliente.agregarCuenta(cuenta);
-    }
-}
-
-
 }
 
 

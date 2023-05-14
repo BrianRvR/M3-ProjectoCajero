@@ -4,6 +4,7 @@ C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\myc
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\Cliente.java
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\CuentaAhorro.java
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\PrimaryController.java
+C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\SegurosController.java
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\ArchivosClientes.java
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\RetiroController.java
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\PantallaCorrienteController.java
@@ -12,8 +13,10 @@ C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\myc
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\Movimiento.java
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\MovimientosCuentaController.java
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\DetallesCuenta.java
+C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\PrestamoController.java
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\module-info.java
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\Cuenta.java
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\PantallaTransferenciaController.java
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\CuentaCorriente.java
+C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\DonacionController.java
 C:\Users\brian\Documents\NetBeansProjects\cajeroautomatico\src\main\java\com\mycompany\cajeroauto\SecondaryController.java
