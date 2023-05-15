@@ -49,6 +49,15 @@ La aplicación también permite al usuario hacer depósitos de dinero en sus cue
 El usuario puede ver los movimientos realizados en sus cuentas, como retiros, depósitos y transferencias, para mantener un seguimiento de sus transacciones bancarias.
 ![image](https://user-images.githubusercontent.com/98058479/236584768-ce65fbc2-0dec-496f-a9bb-49b61c60d02e.png)
 
+El usuario podra hacer donaciones a cualquier fundacion.
+![image](https://github.com/BrianRvR/M3-ProjectoCajero/assets/98058479/433ea056-8199-4cc1-8b66-9ab6859d2d80)
+
+El usuario podra comprar seguros de vida
+![image](https://github.com/BrianRvR/M3-ProjectoCajero/assets/98058479/ac420f11-39a9-40b3-b011-1299f578737f)
+
+El usuario podra pedir préstamos al banco. Siempre y cuando tenga buenos ingresos dependiendo de la cantidad del préstamo.
+![image](https://github.com/BrianRvR/M3-ProjectoCajero/assets/98058479/57c02206-132c-43c1-94b9-010b56c3c69a)
+
 IV. Conclusiones
 En conclusión, este proyecto de desarrollo de una aplicación de cajero automático virtual ha sido una experiencia valiosa para mi aprendizaje en el ciclo superior. La aplicación que hemos creado permite a los usuarios acceder a sus cuentas bancarias de manera no tan segura pero para los conocimientos basicos que tengo creo que supe
 desempeñarme bien en el proyecto.
