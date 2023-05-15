@@ -3,29 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.cajeroauto;
-
-import java.io.IOException;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -63,9 +51,9 @@ public class DonacionController {
         informacionAsociaciones.put("Cruz Roja", "La Cruz Roja proporciona asistencia humanitaria en casos de emergencia.");
         informacionAsociaciones.put("Médicos Sin Fronteras", "Médicos Sin Fronteras ofrece atención médica en áreas de conflicto.");
         informacionAsociaciones.put("Unicef", "Unicef trabaja para mejorar las vidas de los niños y sus familias.");
-        informacionAsociaciones.put("Amnistía Internacional", "Amnistía Internacional lucha por los derechos humanos en todo el mundo.");
+        informacionAsociaciones.put("Amnistía Internacional", "Amnistía Internacional lucha por los derechos humanos en\n todo el mundo.");
         informacionAsociaciones.put("World Wildlife Fund (WWF)", "WWF trabaja para conservar la naturaleza y reducir las amenazas \n más apremiantes para la diversidad de la vida en la Tierra.");
-        informacionAsociaciones.put("Save the Children", "Save the Children trabaja para mejorar la vida de los niños\n a través de mejores programas de educación, salud y seguridad económica.");
+        informacionAsociaciones.put("Save the Children", "Save the Children trabaja para mejorar la vida de los niños a través\n de mejores programas de educación, salud y seguridad económica.");
 
         // Luego, puedes llenar tu ChoiceBox con estas asociaciones
         seleccionAsociacion.getItems().add("Seleccionar");

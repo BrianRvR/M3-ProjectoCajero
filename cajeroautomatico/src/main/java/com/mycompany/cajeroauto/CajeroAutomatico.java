@@ -4,8 +4,6 @@
  */
 package com.mycompany.cajeroauto;
 
-import java.util.List;
-
 /**
  *
  * @author alumne

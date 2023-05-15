@@ -3,28 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.cajeroauto;
-
-import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -93,46 +82,55 @@ public class PrestamoController implements Initializable {
     }
 
     @FXML
-private void solicitarPrestamo() {
-    // Obtener la cantidad ingresada en el TextField
-    double cantidadPrestamo = Double.parseDouble(cantidadTextField.getText());
+    private void solicitarPrestamo() {
+        // Obtener la cantidad ingresada en el TextField
+        double cantidadPrestamo = Double.parseDouble(cantidadTextField.getText());
 
-    // Obtener el plazo seleccionado por el usuario
-    int plazoSeleccionado = plazoChoiceBox.getValue();
+        // Obtener el plazo seleccionado por el usuario
+        int plazoSeleccionado = plazoChoiceBox.getValue();
 
-    // Verificar si la cantidad solicitada cumple con el requisito mínimo
-    if (cantidadPrestamo >= 1000) {
-        // Verificar si la cuenta corriente existe
-        if (cuentaCorriente != null) {
-            // Lógica para evaluar los ingresos basados en los movimientos de la cuenta
-            List<Movimiento> movimientos = cuentaCorriente.obtenerMovimientosCuenta();
-            double ingresos = calcularIngresos(movimientos);
+        // Verificar si la cantidad solicitada cumple con el requisito mínimo
+        if (cantidadPrestamo >= 1000) {
+            // Verificar si la cuenta corriente existe
+            if (cuentaCorriente != null) {
+                // Lógica para evaluar los ingresos basados en los movimientos de la cuenta
+                List<Movimiento> movimientos = cuentaCorriente.obtenerMovimientosCuenta();
+                double ingresos = calcularIngresos(movimientos);
 
-            // Verificar si los ingresos son suficientes para el préstamo solicitado
-            if (ingresos >= cantidadPrestamo * 2) {
-                System.out.println("¡Felicitaciones! Tu préstamo ha sido aprobado.");
+                // Verificar si los ingresos son suficientes para el préstamo solicitado
+                if (ingresos >= cantidadPrestamo * 2) {
+                    String mensaje = String.format("¡Felicitaciones! Tu préstamo ha sido aprobado. Plazo a pagar: %d año(s).", plazoSeleccionado);
+                    mostrarAlerta(AlertType.INFORMATION, "Préstamo Aprobado", mensaje);
 
-                // Actualizar el saldo de la cuenta corriente después del préstamo
-                cuentaCorriente.actualizarSaldoDespuesPrestamo(cantidadPrestamo);
+                    // Actualizar el saldo de la cuenta corriente después del préstamo
+                    cuentaCorriente.actualizarSaldoDespuesPrestamo(cantidadPrestamo);
 
-                // Cerrar la ventana actual de Prestamo.fxml
-                Stage stage = (Stage) cantidadTextField.getScene().getWindow();
-                stage.close();
+                    // Cerrar la ventana actual de Prestamo.fxml
+                    Stage stage = (Stage) cantidadTextField.getScene().getWindow();
+                    stage.close();
+                } else {
+                     String mensaje = "Lo siento, no tienes suficientes ingresos para la cantidad solicitada.";
+                     mostrarAlerta(AlertType.WARNING, "Préstamo No Aprobado", mensaje);
+                }
             } else {
-                System.out.println("Lo siento, no cumples con los requisitos para el préstamo solicitado.");
+                mostrarAlerta(AlertType.ERROR, "Cuenta Corriente no Encontrada", "No se encontró la cuenta corriente.");
             }
         } else {
-            System.out.println("No se encontró la cuenta corriente.");
+            mostrarAlerta(AlertType.WARNING, "Cantidad Insuficiente", "La cantidad mínima para el préstamo es de 1000.");
         }
-    } else {
-        System.out.println("La cantidad mínima para el préstamo es de 1000.");
     }
-}
-                 
-                    
-    @FXML
-    private void cancelar() {
-        Stage stage = (Stage) botonCancelar.getScene().getWindow();
-        stage.close();
+    
+    private void mostrarAlerta(AlertType tipo, String titulo, String mensaje) {
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
     }
+
+        @FXML
+        private void cancelar() {
+            Stage stage = (Stage) botonCancelar.getScene().getWindow();
+            stage.close();
+        }
 }

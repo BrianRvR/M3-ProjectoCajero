@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.DonacionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.DonacionController">
    <children>
        <ImageView fitHeight="119.0" fitWidth="111.0" layoutX="100.0" layoutY="397.0">
          <image>
@@ -40,6 +40,9 @@
             <Font size="18.0" />
          </font></Button>
       <ChoiceBox fx:id="seleccionAsociacion" layoutX="184.0" layoutY="251.0" onDragDetected="#initialize" prefHeight="40.0" prefWidth="170.0" />
-      <Label fx:id="infoAsociacion" layoutX="185.0" layoutY="306.0" prefHeight="79.0" prefWidth="410.0" />
+      <Label fx:id="infoAsociacion" layoutX="185.0" layoutY="306.0" prefHeight="79.0" prefWidth="410.0">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
    </children>
 </AnchorPane>

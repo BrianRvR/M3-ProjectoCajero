@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.SegurosController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.SegurosController">
    <children>
       <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-13.0" preserveRatio="true">
          <image>
@@ -16,17 +16,23 @@
       </ImageView>
       <Button fx:id="botonCancelar" layoutX="120.0" layoutY="129.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="49.0" prefWidth="149.0" text="Cancelar">
          <font>
-            <Font size="18.0" />
+            <Font size="15.0" />
          </font></Button>
-      <TextArea fx:id="textoSeguro1" editable="false" focusTraversable="false" layoutX="153.0" layoutY="196.0" mouseTransparent="true" pickOnBounds="false" prefHeight="135.0" prefWidth="468.0" />
-      <TextArea fx:id="textoSeguro2" editable="false" focusTraversable="false" layoutX="153.0" layoutY="348.0" mouseTransparent="true" pickOnBounds="false" prefHeight="135.0" prefWidth="468.0" />
-      <Button layoutX="496.0" layoutY="416.0" mnemonicParsing="false" onAction="#botonSeguro2" prefHeight="50.0" prefWidth="107.0" text="Contratar">
+      <TextArea fx:id="textoSeguro1" editable="false" focusTraversable="false" layoutX="153.0" layoutY="196.0" mouseTransparent="true" pickOnBounds="false" prefHeight="135.0" prefWidth="468.0">
          <font>
-            <Font size="18.0" />
+            <Font size="11.0" />
+         </font></TextArea>
+      <TextArea fx:id="textoSeguro2" editable="false" focusTraversable="false" layoutX="153.0" layoutY="348.0" mouseTransparent="true" pickOnBounds="false" prefHeight="135.0" prefWidth="468.0">
+         <font>
+            <Font size="11.0" />
+         </font></TextArea>
+      <Button fx:id="botonseguro2" layoutX="496.0" layoutY="416.0" mnemonicParsing="false" onAction="#comprarSeguro2" prefHeight="50.0" prefWidth="107.0" text="Contratar">
+         <font>
+            <Font size="15.0" />
          </font></Button>
-      <Button layoutX="496.0" layoutY="264.0" mnemonicParsing="false" onAction="#botonSeguro1" prefHeight="50.0" prefWidth="107.0" text="Contratar">
+      <Button fx:id="botonseguro1" layoutX="496.0" layoutY="264.0" mnemonicParsing="false" onAction="#comprarSeguro1" prefHeight="50.0" prefWidth="107.0" text="Contratar">
          <font>
-            <Font size="18.0" />
+            <Font size="15.0" />
          </font>
       </Button>
    </children>

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PrestamoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cajeroauto.PrestamoController">
    <children>
       <ImageView fitHeight="638.0" fitWidth="816.0" layoutX="-8.0" layoutY="-13.0" preserveRatio="true">
          <image>
@@ -19,21 +19,30 @@
       </ImageView>
       <Button fx:id="botonCancelar" layoutX="120.0" layoutY="129.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="49.0" prefWidth="149.0" text="Cancelar">
          <font>
-            <Font size="18.0" />
+            <Font size="15.0" />
          </font>
       </Button>
-      <TextArea accessibleRole="IMAGE_VIEW" editable="false" focusTraversable="false" layoutX="152.0" layoutY="194.0" mouseTransparent="true" pickOnBounds="false" prefHeight="162.0" prefWidth="468.0" text="¡Obtén un préstamo a partir de 1000 euros! Plazos flexibles y tasas competitivas. &#10;Solicita en línea y recibe una respuesta rápida. &#10;Estamos aquí para brindarte el respaldo financiero que necesitas.&#10;Contáctanos para más información.&#10;&#10;Nuestro objetivo es ayudarte a alcanzar tus metas financieras de manera&#10;conveniente y accesible. ¡Contáctanos hoy mismo y descubre cómo podemos &#10;apoyarte en tu camino hacia el éxito económico! (Importante solo plazos de años)&#10;" />
+      <TextArea accessibleRole="IMAGE_VIEW" editable="false" focusTraversable="false" layoutX="152.0" layoutY="191.0" mouseTransparent="true" pickOnBounds="false" prefHeight="162.0" prefWidth="474.0" text="¡Obtén un préstamo a partir de 1000 euros! Plazos flexibles y tasas competitivas. &#10;Solicita en línea y recibe una respuesta rápida. &#10;Estamos aquí para brindarte el respaldo financiero que necesitas.&#10;Contáctanos para más información.&#10;&#10;Nuestro objetivo es ayudarte a alcanzar tus metas financieras de manera&#10;conveniente y accesible. ¡Contáctanos hoy mismo y descubre cómo podemos &#10;apoyarte en tu camino hacia el éxito económico! (Importante solo plazos de años)&#10;">
+         <font>
+            <Font size="11.0" />
+         </font></TextArea>
       <Button layoutX="296.0" layoutY="427.0" mnemonicParsing="false" onAction="#solicitarPrestamo" prefHeight="50.0" prefWidth="179.0" text="Solicitar Préstamo">
          <font>
-            <Font size="18.0" />
+            <Font size="15.0" />
          </font>
       </Button>
       <TextField fx:id="cantidadTextField" alignment="CENTER" layoutX="276.0" layoutY="371.0" prefHeight="40.0" prefWidth="150.0" promptText="Cantidad">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="152.0" layoutY="371.0" prefHeight="40.0" prefWidth="121.0" text="Préstamo a Solicitar :" textAlignment="CENTER" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="152.0" layoutY="371.0" prefHeight="40.0" prefWidth="121.0" text="Préstamo a Solicitar :" textAlignment="CENTER">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
       <ChoiceBox fx:id="plazoChoiceBox" layoutX="536.0" layoutY="371.0" prefHeight="40.0" prefWidth="83.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="435.0" layoutY="371.0" prefHeight="40.0" prefWidth="101.0" text="Plazos a Pagar :" textAlignment="CENTER" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="435.0" layoutY="371.0" prefHeight="40.0" prefWidth="101.0" text="Plazos a Pagar :" textAlignment="CENTER">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
    </children>
 </AnchorPane>

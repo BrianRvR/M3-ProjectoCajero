@@ -4,24 +4,14 @@
  */
 package com.mycompany.cajeroauto;
 
-import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -45,6 +35,12 @@ public class SegurosController implements Initializable {
     
     @FXML
     private Button botonCancelar;
+    
+    @FXML
+    private Button botonseguro1;
+    
+    @FXML
+    private Button botonseguro2;
 
     private double precioSeguro1 = 10000;
     private double precioSeguro2 = 5000;
@@ -52,10 +48,10 @@ public class SegurosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Inicializar los textos con la información de los seguros
-         textoSeguro1.setText("Seguro para personas mayores de 50 años durante 3 años. Este seguro está diseñado\n" +
-        "especialmente para brindar protección a personas de 50 años o más. Ofrece\n" +
-        "cobertura completa en caso de fallecimiento, así como beneficios adicionales como\n" +
-        "indemnización por enfermedades críticas. \n" +
+         textoSeguro1.setText("Seguro para personas mayores de 50 años durante 3 años. Este seguro está\n" +
+        "diseñado especialmente para brindar protección a personas de 50 años o más.\n" +
+        "Ofrece cobertura completa en caso de fallecimiento, así como beneficios\n" +
+        "adicionales como indemnización por enfermedades críticas. \n" +
         "\n" +
         "Precio: $" + precioSeguro1);
 
@@ -66,6 +62,7 @@ public class SegurosController implements Initializable {
         "en caso de accidentes. \n" +
         "\n" +
         "Precio: $" + precioSeguro2);
+         
 }
 
     public void setBanco(Banco banco) {
@@ -81,8 +78,8 @@ public class SegurosController implements Initializable {
     }
 
     
-    @FXML
-    private void botonSeguro1() {
+     @FXML
+    private void comprarSeguro1() {
         try {
             cuenta.comprarSeguro(precioSeguro1, "Seguro para personas mayores de 50 años durante 3 años");
 
@@ -92,6 +89,9 @@ public class SegurosController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Has contratado el seguro para personas mayores de 50 años durante 3 años.\nSe ha realizado el pago de $" + precioSeguro1);
             alert.showAndWait();
+
+            // Desactivar el botón después de la compra exitosa
+            botonseguro1.setDisable(true);
         } catch (IllegalArgumentException e) {
             // Mostrar mensaje de error si el saldo de la cuenta no es suficiente
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -103,7 +103,7 @@ public class SegurosController implements Initializable {
     }
 
     @FXML
-    private void botonSeguro2() {
+    private void comprarSeguro2() {
         try {
             cuenta.comprarSeguro(precioSeguro2, "Seguro para personas de 20 a 49 años durante 3 años");
 
@@ -113,6 +113,9 @@ public class SegurosController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Has contratado el seguro para personas mayores de 20 a 49 años durante 3 años.\nSe ha realizado el pago de $" + precioSeguro2);
             alert.showAndWait();
+
+            // Desactivar el botón después de la compra exitosa
+            botonseguro2.setDisable(true);
         } catch (IllegalArgumentException e) {
             // Mostrar mensaje de error si el saldo de la cuenta no es suficiente
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -122,6 +125,7 @@ public class SegurosController implements Initializable {
             alert.showAndWait();
         }
     }
+
     @FXML
     private void cancelar() {
         Stage stage = (Stage) botonCancelar.getScene().getWindow();
